@@ -30,6 +30,8 @@ namespace Azure.Developer.LoadTesting.Models
             {
                 using Utf8JsonWriter writer = new Utf8JsonWriter(stream);
                 writer.WriteStartObject();
+                writer.WritePropertyName("testId");
+                writer.WriteStringValue(testId.AsSpan());
                 writer.WriteEndObject();
                 writer.Flush();
                 stream.Position = 0;
