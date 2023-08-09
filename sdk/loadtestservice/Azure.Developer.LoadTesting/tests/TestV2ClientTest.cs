@@ -1,7 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Azure.Core;
 using Azure.Developer.LoadTesting.Models;
 using NUnit.Framework;
 
@@ -10,40 +13,44 @@ namespace Azure.Developer.LoadTesting.Tests
     public class TestV2ClientTest
     {
         [Test]
-        public async Task PathTestAsync()
+        public void TestV2UpdateSerializeTest()
         {
             // RequiredProperty could not set
-            TestV2 testV2 = new TestV2();
+            TestV2Update testV2 = new TestV2Update();
             testV2.Key = "key";
 
-            // RequiredProperty will not be in the payload if not set. Expected: {"key": "key"}
-            TestV2 result = await new TestV2Client().PatchAsync(testV2);
+            var payload = Deserialize(testV2.ToRequestContent());
+            Assert.AreEqual(true, GetProperty(payload, "key", out var key));
+            Assert.AreEqual("key", key);
+            Assert.AreEqual(false, GetProperty(payload, "requiredProperty", out var requiredProperty));
 
-            // RequiredProperty cannot be set null
-            testV2 = new TestV2();
-            testV2.RequiredProperty = null; // Throw error
-
-            // OptionalProperty can be set to null
-            testV2 = new TestV2();
-            testV2.OptionalProperty = null; // No error
-
-            // OptionalProperty will be in the payload if set to null. Expected: {"optionalProperty": null}
-            result = await new TestV2Client().PatchAsync(testV2);
-
-            // OptionalProperty will not be in the payload if not set. Expected: {}
-            testV2 = new TestV2();
-            result = await new TestV2Client().PatchAsync(testV2);
-
-            // Returned result should have RequiredProperty and Key. If the response payload doesn't have a RequiredProperty value, should set RequiredProperty to 0.
+            // RequiredProperty could be set null
+            testV2 = new TestV2Update();
+            testV2.RequiredProperty = null;
+            payload = Deserialize(testV2.ToRequestContent());
+            Assert.AreEqual(true, GetProperty(payload, "requiredProperty", out requiredProperty));
+            Assert.AreEqual(null, requiredProperty);
         }
 
-        [Test]
-        public async Task PutTestAsync()
+        private static string Deserialize(RequestContent content)
         {
-            // All the required properties should be set.
-            TestV2 testV2 = new TestV2();
-            testV2.Key = "key";
-            TestV2 result = await new TestV2Client().PatchAsync(testV2); // Should throw error because RequiredProperty is not set.
+            var memStream = new MemoryStream();
+            content.WriteTo(memStream, default);
+            memStream.Position = 0;
+            var dsr = new StreamReader(memStream);
+            return dsr.ReadToEnd();
+        }
+
+        private static bool GetProperty(string json, string name, out object value)
+        {
+            var document = JsonDocument.Parse(json);
+            if (document.RootElement.TryGetProperty(name, out var element))
+            {
+                value = element.GetObject();
+                return true;
+            }
+            value = null;
+            return false;
         }
     }
 }

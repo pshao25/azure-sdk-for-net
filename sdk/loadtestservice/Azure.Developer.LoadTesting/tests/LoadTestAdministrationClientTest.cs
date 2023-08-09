@@ -49,7 +49,7 @@ namespace Azure.Developer.LoadTesting.Tests
         public async Task CreateOrUpdateTestConveninence()
         {
             Test test = new Test(_testId);
-            test.Description = "This test was created through loadtesting C# SDK";
+            test.Description = null;
             test.DisplayName = "Dotnet Testing Framework Loadtest";
             test.LoadTestConfiguration = new LoadTestConfiguration();
             test.LoadTestConfiguration.EngineInstances = 1;

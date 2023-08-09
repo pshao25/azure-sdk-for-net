@@ -17,7 +17,7 @@ namespace Azure.Developer.LoadTesting
     /// </summary>
     public partial class TestV2Client
     {
-        private readonly HttpPipeline _pipeline;
+        private readonly HttpPipeline _pipeline = null;
         internal ClientDiagnostics ClientDiagnostics { get; }
 
         /// <summary>
@@ -27,31 +27,19 @@ namespace Azure.Developer.LoadTesting
 
         /// <summary>
         /// </summary>
-        /// <param name="testV2"></param>
+        /// <param name="key"></param>
+        /// <param name="resource"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-        public virtual async Task<Response<TestV2>> PatchAsync(TestV2 testV2, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<TestV2>> PatchAsync(string key, TestV2Update resource, CancellationToken cancellationToken = default)
         {
-            if (testV2 is not IJsonModelSerializable serializable)
-            {
-                throw new InvalidCastException("model is not serializable");
-            }
+            Argument.AssertNotNull(key, nameof(key));
+            Argument.AssertNotNull(resource, nameof(resource));
 
-            using Stream stream = new MemoryStream();
-            using (Utf8JsonWriter writer = new(stream))
-            {
-                serializable.Serialize(writer, new ModelSerializerOptions("P"));
-            }
+            RequestContext context = FromCancellationToken(cancellationToken);
+            Response response = await PatchAsync(key, resource.ToRequestContent(), context).ConfigureAwait(false);
 
-            stream.Position = 0;
-            RequestContent content = RequestContent.Create(stream);
-
-            // TODO: was there a good way to get RequestContext without creating it new?
-            RequestContext context = new() { CancellationToken = cancellationToken };
-
-            Response response = await PatchAsync(testV2.Key, content, context).ConfigureAwait(false);
-
-            return Response.FromValue((TestV2)response, response);
+            return Response.FromValue(TestV2.FromResponse(response), response);
         }
 
         /// <summary>
@@ -79,40 +67,25 @@ namespace Azure.Developer.LoadTesting
             }
         }
 
-        internal HttpMessage CreatePatchRequest(string testId, RequestContent content, RequestContext context)
+        internal HttpMessage CreatePatchRequest(string key, RequestContent content, RequestContext context)
         {
             return new HttpMessage(null, null);
         }
 
         /// <summary>
         /// </summary>
-        /// <param name="testV2"></param>
+        /// <param name="key"></param>
+        /// <param name="resource"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-        public virtual async Task<Response<TestV2>> PutAsync(TestV2 testV2, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<TestV2>> PutAsync(string key, TestV2 resource, CancellationToken cancellationToken = default)
         {
-            testV2.CheckValidPutBody();
+            Argument.AssertNotNullOrEmpty(key, nameof(key));
+            Argument.AssertNotNull(resource, nameof(resource));
 
-            if (testV2 is not IJsonModelSerializable serializable)
-            {
-                throw new InvalidCastException("model is not serializable");
-            }
-
-            using Stream stream = new MemoryStream();
-            using (Utf8JsonWriter writer = new(stream))
-            {
-                serializable.Serialize(writer, new ModelSerializerOptions("P"));
-            }
-
-            stream.Position = 0;
-            RequestContent content = RequestContent.Create(stream);
-
-            // TODO: was there a good way to get RequestContext without creating it new?
-            RequestContext context = new() { CancellationToken = cancellationToken };
-
-            Response response = await PutAsync(testV2.Key, content, context).ConfigureAwait(false);
-
-            return Response.FromValue((TestV2)response, response);
+            RequestContext context = FromCancellationToken(cancellationToken);
+            Response response = await PutAsync(key, resource.ToRequestContent(), context).ConfigureAwait(false);
+            return Response.FromValue(TestV2.FromResponse(response), response);
         }
 
         /// <summary>
@@ -140,7 +113,7 @@ namespace Azure.Developer.LoadTesting
             }
         }
 
-        internal HttpMessage CreatePutRequest(string testId, RequestContent content, RequestContext context)
+        internal HttpMessage CreatePutRequest(string key, RequestContent content, RequestContext context)
         {
             return new HttpMessage(null, null);
         }
@@ -150,11 +123,13 @@ namespace Azure.Developer.LoadTesting
         /// <param name="key"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-        public virtual async Task<Response<TestV2>> GetAsync(string key, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<TestV2>> GetTestV2Async(string key, CancellationToken cancellationToken = default)
         {
-            RequestContext context = new() { CancellationToken = cancellationToken };
-            Response response = await GetAsync(key, context).ConfigureAwait(false);
-            return Response.FromValue((TestV2)response, response);
+            Argument.AssertNotNullOrEmpty(key, nameof(key));
+
+            RequestContext context = FromCancellationToken(cancellationToken);
+            Response response = await GetTestV2Async(key, context).ConfigureAwait(false);
+            return Response.FromValue(TestV2.FromResponse(response), response);
         }
 
         /// <summary>
@@ -162,11 +137,11 @@ namespace Azure.Developer.LoadTesting
         /// <param name="key"></param>
         /// <param name="context"></param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-        public virtual async Task<Response> GetAsync(string key, RequestContext context)
+        public virtual async Task<Response> GetTestV2Async(string key, RequestContext context)
         {
             Argument.AssertNotNullOrEmpty(key, nameof(key));
 
-            using var scope = ClientDiagnostics.CreateScope("TestV2Client.Get");
+            using var scope = ClientDiagnostics.CreateScope("WidgetManagerClient.GetTestV2");
             scope.Start();
             try
             {
@@ -180,9 +155,20 @@ namespace Azure.Developer.LoadTesting
             }
         }
 
-        internal HttpMessage CreateGetRequest(string testId, RequestContext context)
+        internal HttpMessage CreateGetRequest(string key, RequestContext context)
         {
             return new HttpMessage(null, null);
+        }
+
+        private static RequestContext DefaultRequestContext = new RequestContext();
+        internal static RequestContext FromCancellationToken(CancellationToken cancellationToken = default)
+        {
+            if (!cancellationToken.CanBeCanceled)
+            {
+                return DefaultRequestContext;
+            }
+
+            return new RequestContext() { CancellationToken = cancellationToken };
         }
     }
 }
