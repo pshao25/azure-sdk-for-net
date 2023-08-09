@@ -7,6 +7,7 @@ using System.Text.Json;
 using System;
 using Azure.Core.Json;
 using Azure.Core;
+using System.Collections.Generic;
 
 namespace Azure.Developer.LoadTesting.Models
 {
@@ -61,6 +62,7 @@ namespace Azure.Developer.LoadTesting.Models
                 }
                 return default;
             }
+            set => _element.SetProperty("key", value);
         }
 
         /// <summary> </summary>
@@ -74,6 +76,7 @@ namespace Azure.Developer.LoadTesting.Models
                 }
                 return default;
             }
+            set => _element.SetProperty("requiredProperty", value);
         }
 
         /// <summary> </summary>

@@ -23,6 +23,7 @@ namespace Azure.Developer.LoadTesting.Models
 
         BinaryData IModelSerializable.Serialize(ModelSerializerOptions options) => ModelSerializerHelper.SerializeToBinaryData(writer => ((IJsonModelSerializable)this).Serialize(writer, options));
 
+        // Do ew need deserialization
         object IJsonModelSerializable.Deserialize(ref Utf8JsonReader reader, ModelSerializerOptions options)
         {
             JsonDocument doc = JsonDocument.ParseValue(ref reader);
