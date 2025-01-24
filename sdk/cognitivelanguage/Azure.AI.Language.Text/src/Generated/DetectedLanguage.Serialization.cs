@@ -19,28 +19,36 @@ namespace Azure.AI.Language.Text
 
         void IJsonModel<DetectedLanguage>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<DetectedLanguage>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(DetectedLanguage)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             writer.WritePropertyName("name"u8);
             writer.WriteStringValue(Name);
             writer.WritePropertyName("iso6391Name"u8);
             writer.WriteStringValue(Iso6391Name);
             writer.WritePropertyName("confidenceScore"u8);
             writer.WriteNumberValue(ConfidenceScore);
-            if (Optional.IsDefined(Script))
+            if (Optional.IsDefined(ScriptName))
             {
-                writer.WritePropertyName("script"u8);
-                writer.WriteStringValue(Script.Value.ToString());
+                writer.WritePropertyName("scriptName"u8);
+                writer.WriteStringValue(ScriptName.Value.ToString());
             }
-            if (Optional.IsDefined(ScriptCode))
+            if (Optional.IsDefined(ScriptIso15924Code))
             {
-                writer.WritePropertyName("scriptCode"u8);
-                writer.WriteStringValue(ScriptCode.Value.ToString());
+                writer.WritePropertyName("scriptIso15924Code"u8);
+                writer.WriteStringValue(ScriptIso15924Code.Value.ToString());
             }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
@@ -57,7 +65,6 @@ namespace Azure.AI.Language.Text
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         DetectedLanguage IJsonModel<DetectedLanguage>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -83,8 +90,8 @@ namespace Azure.AI.Language.Text
             string name = default;
             string iso6391Name = default;
             double confidenceScore = default;
-            ScriptKind? script = default;
-            ScriptCode? scriptCode = default;
+            ScriptKind? scriptName = default;
+            ScriptCode? scriptIso15924Code = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -104,22 +111,22 @@ namespace Azure.AI.Language.Text
                     confidenceScore = property.Value.GetDouble();
                     continue;
                 }
-                if (property.NameEquals("script"u8))
+                if (property.NameEquals("scriptName"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
                         continue;
                     }
-                    script = new ScriptKind(property.Value.GetString());
+                    scriptName = new ScriptKind(property.Value.GetString());
                     continue;
                 }
-                if (property.NameEquals("scriptCode"u8))
+                if (property.NameEquals("scriptIso15924Code"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
                     {
                         continue;
                     }
-                    scriptCode = new ScriptCode(property.Value.GetString());
+                    scriptIso15924Code = new ScriptCode(property.Value.GetString());
                     continue;
                 }
                 if (options.Format != "W")
@@ -132,8 +139,8 @@ namespace Azure.AI.Language.Text
                 name,
                 iso6391Name,
                 confidenceScore,
-                script,
-                scriptCode,
+                scriptName,
+                scriptIso15924Code,
                 serializedAdditionalRawData);
         }
 

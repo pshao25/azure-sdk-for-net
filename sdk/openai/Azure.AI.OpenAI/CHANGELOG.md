@@ -1,5 +1,59 @@
 # Release History
 
+## 2.1.0 (2024-12-05)
+
+This GA library release aligns functionality with the latest `2024-10-21` stable service API label.
+
+> [!NOTE]
+> For consistency and reliability, GA releases of the `Azure.AI.OpenAI` library will always map to stable Azure OpenAI service API versions. Because stable service API versions omit volatile surfaces such as beta features, GA library releases will also not contain the full set of preview functionality. To use beta and preview features, please use the latest prerelease version of the library.
+
+### Features Added
+
+**Chat**
+
+- [GA] The `2024-10-21` API version brings GA AOAI support for streaming token usage in chat completions; `Usage` is now automatically populated in `StreamingChatCompletionUpdate` instances.
+  - Note 1: this feature is not yet compatible when using On Your Data features (after invoking the `.AddDataSource()` extension method on `ChatCompletionOptions`)
+  - Note 2: this feature is not yet compatible when using image input (a `ChatMessageContentPart` of `Kind` `Image`)
+- [GA] The `AllowParalllelToolCalls` property on `ChatCompletionOptions`, which can be set to `false` to disable the invocation of multiple tools on a single chat completion response, is now supported.
+- [GA] Structured outputs, via the use of `ChatResponseFormat.CreateJsonSchemaFormat()`, is now supported.
+- When using `o1-preview` and `o1-mini` models, `max_completion_tokens` may now be configured by calling the `[Experimental] SetNewMaxCompletionTokensPropertyEnabled()` extension method on `ChatCompletionOptions`.
+  - This extension method will be removed in a future service API version, when it becomes unnecessary once all models support the `max_completion_tokens` property
+
+**Batch**
+
+The `2024-10-21` service API label introduces stable support for batch chat completions to Azure OpenAI. This library release exposes low-level support for batch:
+
+- `AzureOpenAIClient`'s `GetOpenAIFileClient()` will now return a valid, configured instance of `FileClient` that supports uploading files with `FileUploadPurpose.Batch`. This can be used to upload the contents of a valid `.jsonl` file for batch processing.
+- `AzureOpenAIClient`'s `GetBatchClient()` will now return a valid, configured instance of `BatchClient` that can produce a `CreateBatchOperation` given an uploaded file ID using protocol methods.
+- Strongly typed convenience surfaces for `BatchClient` will arrive in a future update.
+
+### Breaking Changes
+
+> [!NOTE]
+> GA library releases only permit breaking changes to items marked with an `[Experimental]` attribute and these changes will be minimized whenever possible.
+
+- `[Experimental]` `GetBatchClient(string deploymentName)` on `AzureOpenAIClient` is removed, as the Azure OpenAI batch API now aligns with OpenAI's in not using a deployment-based request URI path. Please use `GetBatchClient()`, instead.
+- `[Expermental]` the `Uri` property of type `System.Uri` in `ChatCitation` and `ChatRetrivedDocument` has been replaced by a `Url` property of type `string`. This contains the same information but properly handles document paths that don't conform to a valid RFC 3986 identifier.
+
+## 2.1.0-beta.2 (2024-11-04)
+
+This update brings compatibility with the Azure OpenAI `2024-10-01-preview` service API version as well as the `2.1.0-beta.2` release of the `OpenAI` library.
+
+### Features Added
+
+- The included update via `2024-09-01-preview` brings AOAI support for streaming token usage in chat completions; `Usage` is now automatically populated in `StreamingChatCompletionUpdate` instances.
+  - Note 1: this feature is not yet compatible when using On Your Data features (after invoking the `.AddDataSource()` extension method on `ChatCompletionOptions`)
+  - Note 2: this feature is not yet compatible when using image input (a `ChatMessageContentPart` of `Kind` `Image`)
+- `2024-10-01-preview` further adds support for ungrounded content detection in chat completion content filter results via the `UngroundedMaterial` property on `ResponseContentFilterResult`, as retrieved from a chat completion via the `GetResponseContentFilterResult()` extension method.
+
+## Breaking Changes
+
+- `[Experimental]` `ChatCitation` and `ChatRetrievedDocument` have each replaced the `Uri` property of type `System.Uri` with a `string` property named `Url`. This aligns with the REST specification and accounts for the wire value of `url` not always providing a valid RFC 3986 identifier [[azure-sdk-for-net \#46793](https://github.com/Azure/azure-sdk-for-net/issues/46793)]
+
+## Bugs Fixed
+
+- Addressed an issue that caused `ChatCitation` and `ChatRetrievedDocument` to sometimes throw on deserialization, specifically when a returned value in the `url` JSON field was not populated with an RFC 3986 compliant identifier for `System.Uri` [[azure-sdk-for-net \#46793](https://github.com/Azure/azure-sdk-for-net/issues/46793)]
+
 ## 2.1.0-beta.1 (2024-10-01)
 
 Relative to the prior GA release, this update restores preview surfaces, retargeting to the latest `2024-08-01-preview` service `api-version` label. It also brings early support for the newly-announced `/realtime` capabilities with `gpt-4o-realtime-preview`. You can read more about Azure OpenAI support for `/realtime` in the annoucement post here: https://azure.microsoft.com/blog/announcing-new-products-and-features-for-azure-openai-service-including-gpt-4o-realtime-preview-with-audio-and-speech-capabilities/
@@ -10,7 +64,7 @@ Relative to the prior GA release, this update restores preview surfaces, retarge
   - This maps to the new `/realtime` beta endpoint and is thus marked with a new `[Experimental("OPENAI002")]` diagnostic tag. 
   - This is a very early version of the convenience surface and thus subject to significant change
   - Documentation and samples will arrive soon; in the interim, see the scenario test files (in `/tests`) for basic usage
-  - You can also find an external sample employing this client, together with Azure OpenAI support, at https://github.com/Azure-Samples/aoai-realtime-audio-sdk/tree/main/dotnet/samples/console
+  - You can also find an external sample employing this client, together with Azure OpenAI support, at https://github.com/Azure-Samples/aoai-realtime-audio-sdk/tree/main/dotnet/samples
 
 ## 2.0.0 (2024-09-30)
 
@@ -569,7 +623,7 @@ management, and align with the Azure SDK guidelines.
   - In contrast to other capabilities, DALL-E image generation does not require explicit creation or specification of a deployment or model. Its surface as such does not include this concept.
 - Functions for chat completions are now supported: see [OpenAI's blog post on the topic](https://openai.com/blog/function-calling-and-other-api-updates) for much more detail.
   - A list of `FunctionDefinition` objects may be populated on `ChatCompletionsOptions` via its `Functions` property. These definitions include a name and description together with a serialized JSON Schema representation of its parameters; these parameters can be generated easily via `BinaryData.FromObjectAsJson` with dynamic objects -- see the README for example usage.
-  - **NOTE**: Chat Functions requires a minimum of the `-0613` model versions for `gpt-4` and `gpt-3.5-turbo`/`gpt-35-turbo`. Please ensure you're using these later model versions, as Functions are not supported with older model revisions. For Azure OpenAI, you can update a deployment's model version or create a new model deployment with an updated version via the Azure AI Studio interface, also accessible through Azure Portal.
+  - **NOTE**: Chat Functions requires a minimum of the `-0613` model versions for `gpt-4` and `gpt-3.5-turbo`/`gpt-35-turbo`. Please ensure you're using these later model versions, as Functions are not supported with older model revisions. For Azure OpenAI, you can update a deployment's model version or create a new model deployment with an updated version via the Azure AI Foundry interface, also accessible through Azure Portal.
 - (Azure OpenAI specific) Completions and Chat Completions responses now include embedded content filter annotations for prompts and responses
 - A new `Azure.AI.OpenAI.AzureOpenAIModelFactory` is now present for mocking.
 

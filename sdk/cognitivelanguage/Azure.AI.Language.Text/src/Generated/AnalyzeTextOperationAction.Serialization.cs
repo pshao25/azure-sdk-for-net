@@ -19,13 +19,21 @@ namespace Azure.AI.Language.Text
 
         void IJsonModel<AnalyzeTextOperationAction>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<AnalyzeTextOperationAction>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(AnalyzeTextOperationAction)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             if (Optional.IsDefined(Name))
             {
                 writer.WritePropertyName("taskName"u8);
@@ -48,7 +56,6 @@ namespace Azure.AI.Language.Text
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         AnalyzeTextOperationAction IJsonModel<AnalyzeTextOperationAction>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -76,11 +83,8 @@ namespace Azure.AI.Language.Text
                 switch (discriminator.GetString())
                 {
                     case "AbstractiveSummarization": return AbstractiveSummarizationOperationAction.DeserializeAbstractiveSummarizationOperationAction(element, options);
-                    case "CustomAbstractiveSummarization": return CustomAbstractiveSummarizationOperationAction.DeserializeCustomAbstractiveSummarizationOperationAction(element, options);
                     case "CustomEntityRecognition": return CustomEntitiesOperationAction.DeserializeCustomEntitiesOperationAction(element, options);
-                    case "CustomHealthcare": return CustomHealthcareOperationAction.DeserializeCustomHealthcareOperationAction(element, options);
                     case "CustomMultiLabelClassification": return CustomMultiLabelClassificationOperationAction.DeserializeCustomMultiLabelClassificationOperationAction(element, options);
-                    case "CustomSentimentAnalysis": return CustomSentimentAnalysisOperationAction.DeserializeCustomSentimentAnalysisOperationAction(element, options);
                     case "CustomSingleLabelClassification": return CustomSingleLabelClassificationOperationAction.DeserializeCustomSingleLabelClassificationOperationAction(element, options);
                     case "EntityLinking": return EntityLinkingOperationAction.DeserializeEntityLinkingOperationAction(element, options);
                     case "EntityRecognition": return EntitiesOperationAction.DeserializeEntitiesOperationAction(element, options);

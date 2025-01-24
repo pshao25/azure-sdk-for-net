@@ -19,13 +19,21 @@ namespace Azure.AI.DocumentIntelligence
 
         void IJsonModel<DocumentClassifierDetails>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<DocumentClassifierDetails>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(DocumentClassifierDetails)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             writer.WritePropertyName("classifierId"u8);
             writer.WriteStringValue(ClassifierId);
             if (Optional.IsDefined(Description))
@@ -40,6 +48,11 @@ namespace Azure.AI.DocumentIntelligence
                 writer.WritePropertyName("expirationDateTime"u8);
                 writer.WriteStringValue(ExpiresOn.Value, "O");
             }
+            if (options.Format != "W" && Optional.IsDefined(ModifiedOn))
+            {
+                writer.WritePropertyName("modifiedDateTime"u8);
+                writer.WriteStringValue(ModifiedOn.Value, "O");
+            }
             writer.WritePropertyName("apiVersion"u8);
             writer.WriteStringValue(ApiVersion);
             if (Optional.IsDefined(BaseClassifierId))
@@ -49,7 +62,7 @@ namespace Azure.AI.DocumentIntelligence
             }
             writer.WritePropertyName("docTypes"u8);
             writer.WriteStartObject();
-            foreach (var item in DocTypes)
+            foreach (var item in DocumentTypes)
             {
                 writer.WritePropertyName(item.Key);
                 writer.WriteObjectValue(item.Value, options);
@@ -80,7 +93,6 @@ namespace Azure.AI.DocumentIntelligence
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         DocumentClassifierDetails IJsonModel<DocumentClassifierDetails>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -107,6 +119,7 @@ namespace Azure.AI.DocumentIntelligence
             string description = default;
             DateTimeOffset createdDateTime = default;
             DateTimeOffset? expirationDateTime = default;
+            DateTimeOffset? modifiedDateTime = default;
             string apiVersion = default;
             string baseClassifierId = default;
             IReadOnlyDictionary<string, ClassifierDocumentTypeDetails> docTypes = default;
@@ -137,6 +150,15 @@ namespace Azure.AI.DocumentIntelligence
                         continue;
                     }
                     expirationDateTime = property.Value.GetDateTimeOffset("O");
+                    continue;
+                }
+                if (property.NameEquals("modifiedDateTime"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    modifiedDateTime = property.Value.GetDateTimeOffset("O");
                     continue;
                 }
                 if (property.NameEquals("apiVersion"u8))
@@ -184,6 +206,7 @@ namespace Azure.AI.DocumentIntelligence
                 description,
                 createdDateTime,
                 expirationDateTime,
+                modifiedDateTime,
                 apiVersion,
                 baseClassifierId,
                 docTypes,

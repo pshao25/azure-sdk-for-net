@@ -19,13 +19,21 @@ namespace Azure.AI.Language.Text
 
         void IJsonModel<AbstractiveSummarizationActionContent>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<AbstractiveSummarizationActionContent>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(AbstractiveSummarizationActionContent)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             if (Optional.IsDefined(LoggingOptOut))
             {
                 writer.WritePropertyName("loggingOptOut"u8);
@@ -51,10 +59,10 @@ namespace Azure.AI.Language.Text
                 writer.WritePropertyName("summaryLength"u8);
                 writer.WriteStringValue(SummaryLength.Value.ToString());
             }
-            if (Optional.IsDefined(Query))
+            if (Optional.IsDefined(Instruction))
             {
-                writer.WritePropertyName("query"u8);
-                writer.WriteStringValue(Query);
+                writer.WritePropertyName("instruction"u8);
+                writer.WriteStringValue(Instruction);
             }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
@@ -71,7 +79,6 @@ namespace Azure.AI.Language.Text
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         AbstractiveSummarizationActionContent IJsonModel<AbstractiveSummarizationActionContent>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -99,7 +106,7 @@ namespace Azure.AI.Language.Text
             int? sentenceCount = default;
             StringIndexType? stringIndexType = default;
             SummaryLengthBucket? summaryLength = default;
-            string query = default;
+            string instruction = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -145,9 +152,9 @@ namespace Azure.AI.Language.Text
                     summaryLength = new SummaryLengthBucket(property.Value.GetString());
                     continue;
                 }
-                if (property.NameEquals("query"u8))
+                if (property.NameEquals("instruction"u8))
                 {
-                    query = property.Value.GetString();
+                    instruction = property.Value.GetString();
                     continue;
                 }
                 if (options.Format != "W")
@@ -162,7 +169,7 @@ namespace Azure.AI.Language.Text
                 sentenceCount,
                 stringIndexType,
                 summaryLength,
-                query,
+                instruction,
                 serializedAdditionalRawData);
         }
 

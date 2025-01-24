@@ -19,7 +19,9 @@ skip-csproj: true
 modelerfour:
   flatten-payloads: false
 use-model-reader-writer: true
-use-write-core: true
+
+models-to-treat-empty-string-as-null:
+  - IaasComputeVmProtectedItem
 
 rename-mapping:
   Job: BackupGenericJob

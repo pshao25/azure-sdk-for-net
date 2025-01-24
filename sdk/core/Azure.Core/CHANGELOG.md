@@ -4,9 +4,13 @@
 
 ### Features Added
 
+- Added `MexicoCentral` and `SpainCentral` locations to `AzureLocation` struct. ([#47862](https://github.com/Azure/azure-sdk-for-net/pull/47862))
+
 ### Breaking Changes
 
 ### Bugs Fixed
+
+- Fixed an issue where `BearerTokenAuthenticationPolicy` throws `ArgumentOutOfRangeException` if the `ExpiresOn` property of the token is the default value. ([#47040](https://github.com/Azure/azure-sdk-for-net/pull/47040))
 
 ### Other Changes
 

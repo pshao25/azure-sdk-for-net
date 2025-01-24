@@ -11,7 +11,7 @@ namespace Azure.Storage.DataMovement
 {
     internal static partial class CheckpointerExtensions
     {
-        internal static TransferCheckpointer BuildCheckpointer(TransferCheckpointStoreOptions options)
+        internal static ITransferCheckpointer BuildCheckpointer(TransferCheckpointStoreOptions options)
         {
             if (options?.Enabled == false)
             {
@@ -19,14 +19,14 @@ namespace Azure.Storage.DataMovement
             }
             else
             {
-                return new LocalTransferCheckpointer(options?.CheckpointerPath);
+                return new LocalTransferCheckpointer(options?.CheckpointPath);
             }
         }
 
         internal static bool IsLocalResource(this StorageResource resource) => resource.Uri.IsFile;
 
-        internal static async Task<DataTransferStatus> GetJobStatusAsync(
-            this TransferCheckpointer checkpointer,
+        internal static async Task<TransferStatus> GetJobStatusAsync(
+            this SerializerTransferCheckpointer checkpointer,
             string transferId,
             CancellationToken cancellationToken = default)
         {
@@ -38,23 +38,23 @@ namespace Azure.Storage.DataMovement
             {
                 BinaryReader reader = new BinaryReader(stream);
                 JobPlanStatus jobPlanStatus = (JobPlanStatus)reader.ReadInt32();
-                return jobPlanStatus.ToDataTransferStatus();
+                return jobPlanStatus.ToTransferStatus();
             }
         }
 
         internal static async Task<bool> IsResumableAsync(
-            this TransferCheckpointer checkpointer,
+            this ITransferCheckpointer checkpointer,
             string transferId,
             CancellationToken cancellationToken)
         {
-            DataTransferStatus jobStatus = await checkpointer.GetJobStatusAsync(transferId, cancellationToken).ConfigureAwait(false);
+            TransferStatus jobStatus = await checkpointer.GetJobStatusAsync(transferId, cancellationToken).ConfigureAwait(false);
 
             // Transfers marked as fully completed are not resumable
-            return jobStatus.State != DataTransferState.Completed || jobStatus.HasFailedItems || jobStatus.HasSkippedItems;
+            return jobStatus.State != TransferState.Completed || jobStatus.HasFailedItems || jobStatus.HasSkippedItems;
         }
 
-        internal static async Task<DataTransferProperties> GetDataTransferPropertiesAsync(
-            this TransferCheckpointer checkpointer,
+        internal static async Task<TransferProperties> GetTransferPropertiesAsync(
+            this SerializerTransferCheckpointer checkpointer,
             string transferId,
             CancellationToken cancellationToken)
         {
@@ -68,21 +68,21 @@ namespace Azure.Storage.DataMovement
                 header = JobPlanHeader.Deserialize(stream);
             }
 
-            return new DataTransferProperties
+            return new TransferProperties
             {
                 TransferId = transferId,
                 SourceUri = new Uri(header.ParentSourcePath),
                 SourceProviderId = header.SourceProviderId,
-                SourceCheckpointData = header.SourceCheckpointData,
+                SourceCheckpointDetails = header.SourceCheckpointDetails,
                 DestinationUri = new Uri(header.ParentDestinationPath),
                 DestinationProviderId = header.DestinationProviderId,
-                DestinationCheckpointData = header.DestinationCheckpointData,
+                DestinationCheckpointDetails = header.DestinationCheckpointDetails,
                 IsContainer = header.IsContainer,
             };
         }
 
         internal static async Task<bool> IsEnumerationCompleteAsync(
-            this TransferCheckpointer checkpointer,
+            this SerializerTransferCheckpointer checkpointer,
             string transferId,
             CancellationToken cancellationToken = default)
         {
@@ -97,7 +97,7 @@ namespace Azure.Storage.DataMovement
         }
 
         internal static async Task OnEnumerationCompleteAsync(
-            this TransferCheckpointer checkpointer,
+            this SerializerTransferCheckpointer checkpointer,
             string transferId,
             CancellationToken cancellationToken = default)
         {

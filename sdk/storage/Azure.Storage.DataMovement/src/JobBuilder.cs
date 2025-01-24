@@ -7,6 +7,7 @@ using System.IO;
 using System.Buffers;
 using Azure.Core.Pipeline;
 using System;
+using Azure.Storage.DataMovement.JobPlan;
 
 namespace Azure.Storage.DataMovement;
 
@@ -16,11 +17,11 @@ internal class JobBuilder
 
     /// <summary>
     /// Defines the error handling method to follow when an error is seen. Defaults to
-    /// <see cref="DataTransferErrorMode.StopOnAnyFailure"/>.
+    /// <see cref="TransferErrorMode.StopOnAnyFailure"/>.
     ///
-    /// See <see cref="DataTransferErrorMode"/>.
+    /// See <see cref="TransferErrorMode"/>.
     /// </summary>
-    private readonly DataTransferErrorMode _errorHandling;
+    private readonly TransferErrorMode _errorHandling;
 
     private ClientDiagnostics ClientDiagnostics { get; }
 
@@ -32,7 +33,7 @@ internal class JobBuilder
 
     internal JobBuilder(
         ArrayPool<byte> arrayPool,
-        DataTransferErrorMode errorHandling,
+        TransferErrorMode errorHandling,
         ClientDiagnostics clientDiagnostics)
     {
         _arrayPool = arrayPool;
@@ -40,16 +41,16 @@ internal class JobBuilder
         ClientDiagnostics = clientDiagnostics;
     }
 
-    public virtual async Task<(DataTransfer Transfer, TransferJobInternal TransferInternal)> BuildJobAsync(
+    public virtual async Task<(TransferOperation Transfer, TransferJobInternal TransferInternal)> BuildJobAsync(
         StorageResource sourceResource,
         StorageResource destinationResource,
-        DataTransferOptions transferOptions,
-        TransferCheckpointer checkpointer,
+        TransferOptions transferOptions,
+        ITransferCheckpointer checkpointer,
         string transferId,
         bool resumeJob,
         CancellationToken cancellationToken)
     {
-        DataTransfer dataTransfer = new(id: transferId);
+        TransferOperation transferOperation = new(id: transferId);
         TransferJobInternal transferJobInternal;
 
         // Single transfer
@@ -61,7 +62,7 @@ internal class JobBuilder
                 destationItem,
                 transferOptions,
                 checkpointer,
-                dataTransfer,
+                transferOperation,
                 resumeJob,
                 cancellationToken).ConfigureAwait(false);
         }
@@ -74,7 +75,7 @@ internal class JobBuilder
                 destinationContainer,
                 transferOptions,
                 checkpointer,
-                dataTransfer,
+                transferOperation,
                 resumeJob,
                 cancellationToken).ConfigureAwait(false);
         }
@@ -84,21 +85,21 @@ internal class JobBuilder
             throw Errors.InvalidTransferResourceTypes();
         }
 
-        return (dataTransfer, transferJobInternal);
+        return (transferOperation, transferJobInternal);
     }
 
     private async Task<TransferJobInternal> BuildSingleTransferJob(
         StorageResourceItem sourceResource,
         StorageResourceItem destinationResource,
-        DataTransferOptions transferOptions,
-        TransferCheckpointer checkpointer,
-        DataTransfer dataTransfer,
+        TransferOptions transferOptions,
+        ITransferCheckpointer checkpointer,
+        TransferOperation transferOperation,
         bool resumeJob,
         CancellationToken cancellationToken)
     {
         TransferJobInternal.CreateJobPartSingleAsync single;
         TransferJobInternal.CreateJobPartMultiAsync multi;
-        Func<TransferJobInternal, Stream, StorageResourceItem, StorageResourceItem, JobPartInternal> rehydrate;
+        Func<TransferJobInternal, JobPartPlanHeader, StorageResourceItem, StorageResourceItem, JobPartInternal> rehydrate;
         if (sourceResource.IsLocalResource() && !destinationResource.IsLocalResource())
         {
             single = StreamToUriJobPart.CreateJobPartAsync;
@@ -123,7 +124,7 @@ internal class JobBuilder
         }
 
         TransferJobInternal job = new(
-            dataTransfer: dataTransfer,
+            transferOperation: transferOperation,
             sourceResource: sourceResource,
             destinationResource: destinationResource,
             single,
@@ -134,22 +135,18 @@ internal class JobBuilder
             arrayPool: _arrayPool,
             clientDiagnostics: ClientDiagnostics);
 
-        if (resumeJob)
+        int jobPartCount = await checkpointer.GetCurrentJobPartCountAsync(
+                transferId: transferOperation.Id,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        if (resumeJob && jobPartCount > 0)
         {
-            using (Stream stream = await checkpointer.ReadJobPartPlanFileAsync(
-                transferId: dataTransfer.Id,
-                partNumber: 0,
-                offset: 0,
-                length: 0,
-                cancellationToken: cancellationToken).ConfigureAwait(false))
-            {
-                job.AppendJobPart(
-                    rehydrate(
-                        job,
-                        stream,
-                        sourceResource,
-                        destinationResource));
-            }
+            JobPartPlanHeader part = await checkpointer.GetJobPartAsync(transferOperation.Id, partNumber: 0).ConfigureAwait(false);
+            job.AppendJobPart(
+                rehydrate(
+                    job,
+                    part,
+                    sourceResource,
+                    destinationResource));
         }
         return job;
     }
@@ -157,15 +154,15 @@ internal class JobBuilder
     private async Task<TransferJobInternal> BuildContainerTransferJob(
         StorageResourceContainer sourceResource,
         StorageResourceContainer destinationResource,
-        DataTransferOptions transferOptions,
-        TransferCheckpointer checkpointer,
-        DataTransfer dataTransfer,
+        TransferOptions transferOptions,
+        ITransferCheckpointer checkpointer,
+        TransferOperation transferOperation,
         bool resumeJob,
         CancellationToken cancellationToken)
     {
         TransferJobInternal.CreateJobPartSingleAsync single;
         TransferJobInternal.CreateJobPartMultiAsync multi;
-        Func<TransferJobInternal, Stream, StorageResourceContainer, StorageResourceContainer, JobPartInternal> rehydrate;
+        Func<TransferJobInternal, JobPartPlanHeader, StorageResourceContainer, StorageResourceContainer, JobPartInternal> rehydrate;
         if (sourceResource.IsLocalResource() && !destinationResource.IsLocalResource())
         {
             single = StreamToUriJobPart.CreateJobPartAsync;
@@ -190,7 +187,7 @@ internal class JobBuilder
         }
 
         TransferJobInternal job = new(
-            dataTransfer: dataTransfer,
+            transferOperation: transferOperation,
             sourceResource: sourceResource,
             destinationResource: destinationResource,
             single,
@@ -204,25 +201,18 @@ internal class JobBuilder
         if (resumeJob)
         {
             // Iterate through all job parts and append to the job
-            int jobPartCount = await checkpointer.CurrentJobPartCountAsync(
-                transferId: dataTransfer.Id,
+            int jobPartCount = await checkpointer.GetCurrentJobPartCountAsync(
+                transferId: transferOperation.Id,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
             for (var currentJobPart = 0; currentJobPart < jobPartCount; currentJobPart++)
             {
-                using (Stream stream = await checkpointer.ReadJobPartPlanFileAsync(
-                    transferId: dataTransfer.Id,
-                    partNumber: currentJobPart,
-                    offset: 0,
-                    length: 0,
-                    cancellationToken: cancellationToken).ConfigureAwait(false))
-                {
-                    job.AppendJobPart(
-                        rehydrate(
-                            job,
-                            stream,
-                            sourceResource,
-                            destinationResource));
-                }
+                JobPartPlanHeader part = await checkpointer.GetJobPartAsync(transferOperation.Id, currentJobPart).ConfigureAwait(false);
+                job.AppendJobPart(
+                    rehydrate(
+                        job,
+                        part,
+                        sourceResource,
+                        destinationResource));
             }
         }
         return job;

@@ -19,13 +19,21 @@ namespace Azure.AI.Language.Text
 
         void IJsonModel<AnalyzeTextOperationResult>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<AnalyzeTextOperationResult>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(AnalyzeTextOperationResult)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             writer.WritePropertyName("lastUpdateDateTime"u8);
             writer.WriteStringValue(LastUpdateDateTime, "O");
             writer.WritePropertyName("status"u8);
@@ -52,7 +60,6 @@ namespace Azure.AI.Language.Text
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         AnalyzeTextOperationResult IJsonModel<AnalyzeTextOperationResult>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -80,11 +87,8 @@ namespace Azure.AI.Language.Text
                 switch (discriminator.GetString())
                 {
                     case "AbstractiveSummarizationLROResults": return AbstractiveSummarizationOperationResult.DeserializeAbstractiveSummarizationOperationResult(element, options);
-                    case "CustomAbstractiveSummarizationLROResults": return CustomAbstractiveSummarizationOperationResult.DeserializeCustomAbstractiveSummarizationOperationResult(element, options);
                     case "CustomEntityRecognitionLROResults": return CustomEntityRecognitionOperationResult.DeserializeCustomEntityRecognitionOperationResult(element, options);
-                    case "CustomHealthcareLROResults": return CustomHealthcareOperationResult.DeserializeCustomHealthcareOperationResult(element, options);
                     case "CustomMultiLabelClassificationLROResults": return CustomMultiLabelClassificationOperationResult.DeserializeCustomMultiLabelClassificationOperationResult(element, options);
-                    case "CustomSentimentAnalysisLROResults": return CustomSentimentAnalysisOperationResult.DeserializeCustomSentimentAnalysisOperationResult(element, options);
                     case "CustomSingleLabelClassificationLROResults": return CustomSingleLabelClassificationOperationResult.DeserializeCustomSingleLabelClassificationOperationResult(element, options);
                     case "EntityLinkingLROResults": return EntityLinkingOperationResult.DeserializeEntityLinkingOperationResult(element, options);
                     case "EntityRecognitionLROResults": return EntityRecognitionOperationResult.DeserializeEntityRecognitionOperationResult(element, options);

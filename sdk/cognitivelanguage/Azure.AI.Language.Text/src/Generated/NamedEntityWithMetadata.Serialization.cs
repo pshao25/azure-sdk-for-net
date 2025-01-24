@@ -19,13 +19,21 @@ namespace Azure.AI.Language.Text
 
         void IJsonModel<NamedEntityWithMetadata>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
         {
+            writer.WriteStartObject();
+            JsonModelWriteCore(writer, options);
+            writer.WriteEndObject();
+        }
+
+        /// <param name="writer"> The JSON writer. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual void JsonModelWriteCore(Utf8JsonWriter writer, ModelReaderWriterOptions options)
+        {
             var format = options.Format == "W" ? ((IPersistableModel<NamedEntityWithMetadata>)this).GetFormatFromOptions(options) : options.Format;
             if (format != "J")
             {
                 throw new FormatException($"The model {nameof(NamedEntityWithMetadata)} does not support writing '{format}' format.");
             }
 
-            writer.WriteStartObject();
             writer.WritePropertyName("text"u8);
             writer.WriteStringValue(Text);
             writer.WritePropertyName("category"u8);
@@ -41,15 +49,21 @@ namespace Azure.AI.Language.Text
             writer.WriteNumberValue(Length);
             writer.WritePropertyName("confidenceScore"u8);
             writer.WriteNumberValue(ConfidenceScore);
-            writer.WritePropertyName("type"u8);
-            writer.WriteStringValue(Type);
-            writer.WritePropertyName("tags"u8);
-            writer.WriteStartArray();
-            foreach (var item in Tags)
+            if (Optional.IsDefined(Type))
             {
-                writer.WriteObjectValue(item, options);
+                writer.WritePropertyName("type"u8);
+                writer.WriteStringValue(Type);
             }
-            writer.WriteEndArray();
+            if (Optional.IsCollectionDefined(Tags))
+            {
+                writer.WritePropertyName("tags"u8);
+                writer.WriteStartArray();
+                foreach (var item in Tags)
+                {
+                    writer.WriteObjectValue(item, options);
+                }
+                writer.WriteEndArray();
+            }
             if (Optional.IsDefined(Metadata))
             {
                 writer.WritePropertyName("metadata"u8);
@@ -70,7 +84,6 @@ namespace Azure.AI.Language.Text
 #endif
                 }
             }
-            writer.WriteEndObject();
         }
 
         NamedEntityWithMetadata IJsonModel<NamedEntityWithMetadata>.Create(ref Utf8JsonReader reader, ModelReaderWriterOptions options)
@@ -143,6 +156,10 @@ namespace Azure.AI.Language.Text
                 }
                 if (property.NameEquals("tags"u8))
                 {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
                     List<EntityTag> array = new List<EntityTag>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
@@ -174,7 +191,7 @@ namespace Azure.AI.Language.Text
                 length,
                 confidenceScore,
                 type,
-                tags,
+                tags ?? new ChangeTrackingList<EntityTag>(),
                 metadata,
                 serializedAdditionalRawData);
         }
