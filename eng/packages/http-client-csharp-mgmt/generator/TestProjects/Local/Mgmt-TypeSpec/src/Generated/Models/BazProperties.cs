@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> something. </summary>
         [WirePath("something")]
-        public string Something { get; set; }
+        public virtual string Something { get; set; }
 
         /// <summary> boolean value. </summary>
         [WirePath("boolValue")]
-        public bool? BoolValue { get; set; }
+        public virtual bool? BoolValue { get; set; }
     }
 }

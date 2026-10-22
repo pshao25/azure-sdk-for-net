@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the CustomerManagedKeyEncryption. </summary>
         [WirePath("customerManagedKeyEncryption")]
-        public CustomerManagedKeyEncryption CustomerManagedKeyEncryption { get; set; }
+        public virtual CustomerManagedKeyEncryption CustomerManagedKeyEncryption { get; set; }
     }
 }

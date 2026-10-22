@@ -40,7 +40,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Name. </summary>
         [WirePath("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary> Gets the Prediction. </summary>
         [WirePath("prediction")]
@@ -48,7 +48,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the HistoricalData. </summary>
         [WirePath("prediction.predictionInput.historicalData")]
-        public IReadOnlyList<long> PredictionInputHistoricalData
+        public virtual IReadOnlyList<long> PredictionInputHistoricalData
         {
             get
             {

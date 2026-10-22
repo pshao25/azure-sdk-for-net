@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Marker. </summary>
         [WirePath("marker")]
-        public string Marker { get; set; }
+        public virtual string Marker { get; set; }
     }
 }

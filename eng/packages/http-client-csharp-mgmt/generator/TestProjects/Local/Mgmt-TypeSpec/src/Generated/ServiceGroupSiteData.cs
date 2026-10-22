@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public ServiceGroupSiteProperties Properties { get; set; }
+        public virtual ServiceGroupSiteProperties Properties { get; set; }
     }
 }

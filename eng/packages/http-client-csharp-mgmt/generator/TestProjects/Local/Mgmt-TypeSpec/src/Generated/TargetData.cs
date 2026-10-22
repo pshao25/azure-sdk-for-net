@@ -71,10 +71,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
         /// </para>
         /// </summary>
         [WirePath("properties")]
-        public IDictionary<string, BinaryData> Properties { get; }
+        public virtual IDictionary<string, BinaryData> Properties { get; }
 
         /// <summary> Azure resource location. </summary>
         [WirePath("location")]
-        public AzureLocation? Location { get; set; }
+        public virtual AzureLocation? Location { get; set; }
     }
 }

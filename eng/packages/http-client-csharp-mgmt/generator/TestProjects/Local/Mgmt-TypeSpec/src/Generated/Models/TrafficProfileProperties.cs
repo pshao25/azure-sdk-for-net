@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the ProfileStatus. </summary>
         [WirePath("profileStatus")]
-        public TrafficProfileStatus? ProfileStatus { get; set; }
+        public virtual TrafficProfileStatus? ProfileStatus { get; set; }
 
         /// <summary> Gets or sets the TrafficRoutingMethod. </summary>
         [WirePath("trafficRoutingMethod")]
-        public TrafficRoutingMethod? TrafficRoutingMethod { get; set; }
+        public virtual TrafficRoutingMethod? TrafficRoutingMethod { get; set; }
     }
 }

@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public SubscriptionQuotaAllocationsListProperties Properties { get; }
+        public virtual SubscriptionQuotaAllocationsListProperties Properties { get; }
     }
 }

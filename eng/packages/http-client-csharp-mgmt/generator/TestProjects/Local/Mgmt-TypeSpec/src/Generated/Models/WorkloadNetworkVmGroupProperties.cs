@@ -38,14 +38,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Display name of the VM group. </summary>
         [WirePath("displayName")]
-        public string DisplayName { get; set; }
+        public virtual string DisplayName { get; set; }
 
         /// <summary> Virtual machine members of this group. </summary>
         [WirePath("members")]
-        public IList<string> Members { get; }
+        public virtual IList<string> Members { get; }
 
         /// <summary> Provisioning state of the resource. </summary>
         [WirePath("provisioningState")]
-        public string ProvisioningState { get; }
+        public virtual string ProvisioningState { get; }
     }
 }

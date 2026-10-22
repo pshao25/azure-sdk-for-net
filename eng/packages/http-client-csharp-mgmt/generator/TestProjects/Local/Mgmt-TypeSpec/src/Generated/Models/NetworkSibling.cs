@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Subscription ID. </summary>
         [WirePath("subscriptionId")]
-        public string SubscriptionId { get; }
+        public virtual string SubscriptionId { get; }
 
         /// <summary> Resource group name. </summary>
         [WirePath("resourceGroupName")]
-        public string ResourceGroupName { get; }
+        public virtual string ResourceGroupName { get; }
 
         /// <summary> Network interface ID. </summary>
         [WirePath("networkInterfaceId")]
-        public string NetworkInterfaceId { get; }
+        public virtual string NetworkInterfaceId { get; }
     }
 }

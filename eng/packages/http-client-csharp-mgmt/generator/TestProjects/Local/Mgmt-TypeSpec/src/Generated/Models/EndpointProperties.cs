@@ -38,6 +38,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Prop. </summary>
         [WirePath("prop")]
-        public string Prop { get; set; }
+        public virtual string Prop { get; set; }
     }
 }

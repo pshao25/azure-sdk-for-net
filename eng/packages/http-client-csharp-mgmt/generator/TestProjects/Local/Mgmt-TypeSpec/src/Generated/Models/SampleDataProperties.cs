@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> the sample value. </summary>
         [WirePath("sampleValue")]
-        public string SampleValue { get; set; }
+        public virtual string SampleValue { get; set; }
 
         /// <summary> another value. </summary>
         [WirePath("anotherValue")]
-        public int? AnotherValue { get; set; }
+        public virtual int? AnotherValue { get; set; }
     }
 }

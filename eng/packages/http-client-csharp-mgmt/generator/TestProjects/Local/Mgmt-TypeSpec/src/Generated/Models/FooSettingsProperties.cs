@@ -49,19 +49,19 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Marketplace details of the resource. </summary>
         [WirePath("marketplace")]
-        public MarketplaceDetails Marketplace { get; set; }
+        public virtual MarketplaceDetails Marketplace { get; set; }
 
         /// <summary> Details of the user. </summary>
         [WirePath("user")]
-        public UserDetails User { get; set; }
+        public virtual UserDetails User { get; set; }
 
         /// <summary> Provisioning state of the resource. </summary>
         [WirePath("provisioningState")]
-        public ResourceProvisioningState? ProvisioningState { get; }
+        public virtual ResourceProvisioningState? ProvisioningState { get; }
 
         /// <summary> Gets or sets the AccessControlEnabled. </summary>
         [WirePath("accessControlEnabled")]
-        public bool? AccessControlEnabled { get; set; }
+        public virtual bool? AccessControlEnabled { get; set; }
 
         /// <summary> Gets the MetaData. </summary>
         [WirePath("metaData")]
@@ -69,7 +69,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the MetaDatas. </summary>
         [WirePath("metaData.metaDatas")]
-        public IList<string> MetaDatas
+        public virtual IList<string> MetaDatas
         {
             get
             {

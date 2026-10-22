@@ -58,11 +58,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Enabled by default. If highAvailability is disabled, the data set is not replicated. </summary>
         [WirePath("highAvailability")]
-        public HighAvailability? HighAvailability { get; set; }
+        public virtual HighAvailability? HighAvailability { get; set; }
 
         /// <summary> The minimum TLS version for the cluster to support, e.g. '1.2'. </summary>
         [WirePath("minimumTlsVersion")]
-        public TlsVersion? MinimumTlsVersion { get; set; }
+        public virtual TlsVersion? MinimumTlsVersion { get; set; }
 
         /// <summary>
         /// Encryption-at-rest configuration for the cluster.
@@ -80,31 +80,31 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> DNS name of the cluster endpoint. </summary>
         [WirePath("hostName")]
-        public string HostName { get; }
+        public virtual string HostName { get; }
 
         /// <summary> Current provisioning status of the cluster. </summary>
         [WirePath("provisioningState")]
-        public ProvisioningState? ProvisioningState { get; }
+        public virtual ProvisioningState? ProvisioningState { get; }
 
         /// <summary> Explains the current redundancy strategy of the cluster. </summary>
         [WirePath("redundancyMode")]
-        public RedundancyMode? RedundancyMode { get; }
+        public virtual RedundancyMode? RedundancyMode { get; }
 
         /// <summary> Current resource status of the cluster. </summary>
         [WirePath("resourceState")]
-        public ResourceState? ResourceState { get; }
+        public virtual ResourceState? ResourceState { get; }
 
         /// <summary> Version of redis the cluster supports, e.g. '6'. </summary>
         [WirePath("redisVersion")]
-        public string RedisVersion { get; }
+        public virtual string RedisVersion { get; }
 
         /// <summary> List of private endpoint connections. </summary>
         [WirePath("privateEndpointConnections")]
-        public IReadOnlyList<RedisPrivateEndpointConnection> PrivateEndpointConnections { get; } = new ChangeTrackingList<RedisPrivateEndpointConnection>();
+        public virtual IReadOnlyList<RedisPrivateEndpointConnection> PrivateEndpointConnections { get; } = new ChangeTrackingList<RedisPrivateEndpointConnection>();
 
         /// <summary> Gets or sets the CustomerManagedKeyEncryption. </summary>
         [WirePath("encryption.customerManagedKeyEncryption")]
-        public CustomerManagedKeyEncryption CustomerManagedKeyEncryption
+        public virtual CustomerManagedKeyEncryption CustomerManagedKeyEncryption
         {
             get
             {
@@ -122,7 +122,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the MaintenanceWindows. </summary>
         [WirePath("maintenanceConfiguration.maintenanceWindows")]
-        public IList<MaintenanceWindow> MaintenanceWindows
+        public virtual IList<MaintenanceWindow> MaintenanceWindows
         {
             get
             {

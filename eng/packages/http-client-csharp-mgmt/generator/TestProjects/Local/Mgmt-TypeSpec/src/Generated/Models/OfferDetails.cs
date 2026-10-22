@@ -51,26 +51,26 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Publisher Id for the marketplace offer. </summary>
         [WirePath("publisherId")]
-        public string PublisherId { get; set; }
+        public virtual string PublisherId { get; set; }
 
         /// <summary> Offer Id for the marketplace offer. </summary>
         [WirePath("offerId")]
-        public string OfferId { get; set; }
+        public virtual string OfferId { get; set; }
 
         /// <summary> Plan Id for the marketplace offer. </summary>
         [WirePath("planId")]
-        public string PlanId { get; set; }
+        public virtual string PlanId { get; set; }
 
         /// <summary> Plan Name for the marketplace offer. </summary>
         [WirePath("planName")]
-        public string PlanName { get; set; }
+        public virtual string PlanName { get; set; }
 
         /// <summary> Plan Display Name for the marketplace offer. </summary>
         [WirePath("termUnit")]
-        public string TermUnit { get; set; }
+        public virtual string TermUnit { get; set; }
 
         /// <summary> Plan Display Name for the marketplace offer. </summary>
         [WirePath("termId")]
-        public string TermId { get; set; }
+        public virtual string TermId { get; set; }
     }
 }

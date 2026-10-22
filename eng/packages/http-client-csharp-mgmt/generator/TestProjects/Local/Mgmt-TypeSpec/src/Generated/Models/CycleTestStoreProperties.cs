@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The endpoint for the store. </summary>
         [WirePath("endpoint")]
-        public string Endpoint { get; set; }
+        public virtual string Endpoint { get; set; }
 
         /// <summary> Related connections. </summary>
         [WirePath("connections")]
-        public IList<CycleTestConnectionReference> Connections { get; }
+        public virtual IList<CycleTestConnectionReference> Connections { get; }
     }
 }

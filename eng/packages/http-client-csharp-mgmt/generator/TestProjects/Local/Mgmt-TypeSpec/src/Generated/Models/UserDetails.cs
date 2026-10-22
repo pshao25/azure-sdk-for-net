@@ -41,22 +41,22 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> First name of the user. </summary>
         [WirePath("firstName")]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         /// <summary> Last name of the user. </summary>
         [WirePath("lastName")]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
         /// <summary> Email address of the user. </summary>
         [WirePath("emailAddress")]
-        public string EmailAddress { get; set; }
+        public virtual string EmailAddress { get; set; }
 
         /// <summary> User's principal name. </summary>
         [WirePath("upn")]
-        public string Upn { get; set; }
+        public virtual string Upn { get; set; }
 
         /// <summary> User's phone number. </summary>
         [WirePath("phoneNumber")]
-        public string PhoneNumber { get; set; }
+        public virtual string PhoneNumber { get; set; }
     }
 }

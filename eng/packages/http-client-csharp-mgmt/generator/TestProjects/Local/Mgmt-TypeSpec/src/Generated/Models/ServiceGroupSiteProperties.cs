@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> displayName of Site resource. </summary>
         [WirePath("displayName")]
-        public string DisplayName { get; set; }
+        public virtual string DisplayName { get; set; }
 
         /// <summary> Description of Site resource. </summary>
         [WirePath("description")]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         /// <summary> Provisioning state of last operation. </summary>
         [WirePath("provisioningState")]
-        public ResourceProvisioningState? ProvisioningState { get; }
+        public virtual ResourceProvisioningState? ProvisioningState { get; }
     }
 }

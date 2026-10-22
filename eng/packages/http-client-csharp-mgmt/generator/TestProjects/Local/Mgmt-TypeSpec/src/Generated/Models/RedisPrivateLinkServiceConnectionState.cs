@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Status. </summary>
         [WirePath("status")]
-        public RedisPrivateEndpointServiceConnectionStatus? Status { get; }
+        public virtual RedisPrivateEndpointServiceConnectionStatus? Status { get; }
 
         /// <summary> Gets the Description. </summary>
         [WirePath("description")]
-        public string Description { get; }
+        public virtual string Description { get; }
 
         /// <summary> Gets the ActionsRequired. </summary>
         [WirePath("actionsRequired")]
-        public string ActionsRequired { get; }
+        public virtual string ActionsRequired { get; }
     }
 }

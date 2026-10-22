@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The properties associated with the certificate. </summary>
         [WirePath("properties")]
-        public TestCertificateCreateOrUpdateProperties Properties { get; set; }
+        public virtual TestCertificateCreateOrUpdateProperties Properties { get; set; }
     }
 }

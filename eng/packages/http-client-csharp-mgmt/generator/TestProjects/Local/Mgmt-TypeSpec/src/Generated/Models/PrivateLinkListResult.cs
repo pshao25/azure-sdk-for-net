@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The PrivateLink items on this page. </summary>
         [WirePath("value")]
-        public IList<PrivateLink> Value { get; }
+        public virtual IList<PrivateLink> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public Uri NextLink { get; }
+        public virtual Uri NextLink { get; }
     }
 }

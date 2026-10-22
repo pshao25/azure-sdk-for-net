@@ -38,6 +38,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Name. </summary>
         [WirePath("name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
     }
 }

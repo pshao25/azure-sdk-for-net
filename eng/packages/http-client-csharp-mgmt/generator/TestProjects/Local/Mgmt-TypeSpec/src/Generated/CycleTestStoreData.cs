@@ -42,6 +42,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public CycleTestStoreProperties Properties { get; set; }
+        public virtual CycleTestStoreProperties Properties { get; set; }
     }
 }

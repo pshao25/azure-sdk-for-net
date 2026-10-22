@@ -40,11 +40,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Tags. </summary>
         [WirePath("tags")]
-        public IDictionary<string, string> Tags { get; }
+        public virtual IDictionary<string, string> Tags { get; }
 
         /// <summary> Gets or sets the JobName. </summary>
         [WirePath("properties.jobName")]
-        public string JobName
+        public virtual string JobName
         {
             get
             {

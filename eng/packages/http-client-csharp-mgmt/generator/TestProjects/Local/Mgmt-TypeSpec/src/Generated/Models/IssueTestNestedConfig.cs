@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Inner value that gets flattened. </summary>
         [WirePath("innerValue")]
-        public string InnerValue { get; set; }
+        public virtual string InnerValue { get; set; }
 
         /// <summary> Inner flag that gets flattened. </summary>
         [WirePath("innerFlag")]
-        public bool? InnerFlag { get; set; }
+        public virtual bool? InnerFlag { get; set; }
     }
 }

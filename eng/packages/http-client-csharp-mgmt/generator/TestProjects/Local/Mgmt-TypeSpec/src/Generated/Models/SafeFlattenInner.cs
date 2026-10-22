@@ -49,6 +49,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the SelectionType. </summary>
         [WirePath("selectionType")]
-        public string SelectionType { get; set; }
+        public virtual string SelectionType { get; set; }
     }
 }

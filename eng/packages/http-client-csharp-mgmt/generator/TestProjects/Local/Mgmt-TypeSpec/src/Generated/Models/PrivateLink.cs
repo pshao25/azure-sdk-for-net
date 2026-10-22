@@ -41,10 +41,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public AzureGeneratorMgmtTypeSpecTestsPrivateLinkResourceProperties Properties { get; }
+        public virtual AzureGeneratorMgmtTypeSpecTestsPrivateLinkResourceProperties Properties { get; }
 
         /// <summary> The managed service identities assigned to this resource. </summary>
         [WirePath("identity")]
-        public ManagedServiceIdentity Identity { get; }
+        public virtual ManagedServiceIdentity Identity { get; }
     }
 }

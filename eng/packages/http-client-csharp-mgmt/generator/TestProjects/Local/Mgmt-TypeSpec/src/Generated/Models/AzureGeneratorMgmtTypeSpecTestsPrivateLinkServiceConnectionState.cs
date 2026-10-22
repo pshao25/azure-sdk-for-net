@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. </summary>
         [WirePath("status")]
-        public AzureGeneratorMgmtTypeSpecTestsPrivateEndpointServiceConnectionStatus? Status { get; set; }
+        public virtual AzureGeneratorMgmtTypeSpecTestsPrivateEndpointServiceConnectionStatus? Status { get; set; }
 
         /// <summary> The reason for approval/rejection of the connection. </summary>
         [WirePath("description")]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         /// <summary> A message indicating if changes on the service provider require any updates on the consumer. </summary>
         [WirePath("actionsRequired")]
-        public string ActionsRequired { get; set; }
+        public virtual string ActionsRequired { get; set; }
     }
 }

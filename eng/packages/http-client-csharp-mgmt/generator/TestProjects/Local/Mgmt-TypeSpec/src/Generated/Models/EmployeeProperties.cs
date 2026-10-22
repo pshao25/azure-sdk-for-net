@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Age of employee. </summary>
         [WirePath("age")]
-        public int? Age { get; }
+        public virtual int? Age { get; }
 
         /// <summary> City of employee. </summary>
         [WirePath("city")]
-        public string City { get; }
+        public virtual string City { get; }
     }
 }

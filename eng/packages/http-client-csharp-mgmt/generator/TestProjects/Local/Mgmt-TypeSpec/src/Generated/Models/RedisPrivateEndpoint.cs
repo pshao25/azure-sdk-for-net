@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Id. </summary>
         [WirePath("id")]
-        public string Id { get; }
+        public virtual string Id { get; }
     }
 }

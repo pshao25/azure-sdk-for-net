@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Display name of the policy assignment. </summary>
         [WirePath("displayName")]
-        public string DisplayName { get; set; }
+        public virtual string DisplayName { get; set; }
 
         /// <summary> Description of the policy assignment. </summary>
         [WirePath("description")]
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
     }
 }

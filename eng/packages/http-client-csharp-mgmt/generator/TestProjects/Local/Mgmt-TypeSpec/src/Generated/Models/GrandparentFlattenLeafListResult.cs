@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The GrandparentFlattenLeaf items on this page. </summary>
         [WirePath("value")]
-        public IList<GrandparentFlattenLeaf> Value { get; }
+        public virtual IList<GrandparentFlattenLeaf> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public Uri NextLink { get; }
+        public virtual Uri NextLink { get; }
     }
 }

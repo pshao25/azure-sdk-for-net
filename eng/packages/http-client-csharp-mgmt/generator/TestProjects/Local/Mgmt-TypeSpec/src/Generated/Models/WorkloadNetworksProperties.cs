@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Display name of the workload network. </summary>
         [WirePath("displayName")]
-        public string DisplayName { get; set; }
+        public virtual string DisplayName { get; set; }
 
         /// <summary> Provisioning state of the resource. </summary>
         [WirePath("provisioningState")]
-        public string ProvisioningState { get; }
+        public virtual string ProvisioningState { get; }
     }
 }

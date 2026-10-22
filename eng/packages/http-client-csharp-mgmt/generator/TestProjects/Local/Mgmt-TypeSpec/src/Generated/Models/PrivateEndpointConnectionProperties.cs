@@ -46,18 +46,18 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The group ids for the private endpoint resource. </summary>
         [WirePath("groupIds")]
-        public IReadOnlyList<string> GroupIds { get; }
+        public virtual IReadOnlyList<string> GroupIds { get; }
 
         /// <summary> The private endpoint resource. </summary>
         [WirePath("privateEndpoint")]
-        public SubResource PrivateEndpoint { get; set; }
+        public virtual SubResource PrivateEndpoint { get; set; }
 
         /// <summary> A collection of information about the state of the connection between service consumer and provider. </summary>
         [WirePath("privateLinkServiceConnectionState")]
-        public AzureGeneratorMgmtTypeSpecTestsPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
+        public virtual AzureGeneratorMgmtTypeSpecTestsPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
         /// <summary> The provisioning state of the private endpoint connection resource. </summary>
         [WirePath("provisioningState")]
-        public AzureGeneratorMgmtTypeSpecTestsPrivateEndpointConnectionProvisioningState? ProvisioningState { get; }
+        public virtual AzureGeneratorMgmtTypeSpecTestsPrivateEndpointConnectionProvisioningState? ProvisioningState { get; }
     }
 }

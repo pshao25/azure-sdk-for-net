@@ -40,6 +40,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Resource tags. </summary>
         [WirePath("tags")]
-        public IDictionary<string, string> Tags { get; }
+        public virtual IDictionary<string, string> Tags { get; }
     }
 }

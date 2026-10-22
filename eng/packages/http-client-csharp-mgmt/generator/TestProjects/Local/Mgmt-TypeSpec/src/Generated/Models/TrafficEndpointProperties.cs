@@ -43,26 +43,26 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the TargetResourceId. </summary>
         [WirePath("targetResourceId")]
-        public string TargetResourceId { get; set; }
+        public virtual string TargetResourceId { get; set; }
 
         /// <summary> Gets or sets the Target. </summary>
         [WirePath("target")]
-        public string Target { get; set; }
+        public virtual string Target { get; set; }
 
         /// <summary> Gets or sets the EndpointStatus. </summary>
         [WirePath("endpointStatus")]
-        public TrafficEndpointStatus? EndpointStatus { get; set; }
+        public virtual TrafficEndpointStatus? EndpointStatus { get; set; }
 
         /// <summary> Gets or sets the Weight. </summary>
         [WirePath("weight")]
-        public int? Weight { get; set; }
+        public virtual int? Weight { get; set; }
 
         /// <summary> Gets or sets the Priority. </summary>
         [WirePath("priority")]
-        public int? Priority { get; set; }
+        public virtual int? Priority { get; set; }
 
         /// <summary> Gets or sets the EndpointLocation. </summary>
         [WirePath("endpointLocation")]
-        public string EndpointLocation { get; set; }
+        public virtual string EndpointLocation { get; set; }
     }
 }

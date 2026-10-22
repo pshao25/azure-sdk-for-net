@@ -42,6 +42,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public WorkloadNetworkSegmentProperties Properties { get; set; }
+        public virtual WorkloadNetworkSegmentProperties Properties { get; set; }
     }
 }

@@ -34,6 +34,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> ID of the resource that manages this resource. </summary>
         [WirePath("managedBy")]
-        public string ManagedBy { get; set; }
+        public virtual string ManagedBy { get; set; }
     }
 }

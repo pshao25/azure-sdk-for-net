@@ -46,18 +46,18 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Unique identifier for the sibling set. </summary>
         [WirePath("id")]
-        public string Id { get; }
+        public virtual string Id { get; }
 
         /// <summary> Name of the sibling set. </summary>
         [WirePath("name")]
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary> Type of the resource. </summary>
         [WirePath("type")]
-        public string Type { get; }
+        public virtual string Type { get; }
 
         /// <summary> Properties of the network sibling set. </summary>
         [WirePath("properties")]
-        public NetworkSiblingSetProperties Properties { get; }
+        public virtual NetworkSiblingSetProperties Properties { get; }
     }
 }

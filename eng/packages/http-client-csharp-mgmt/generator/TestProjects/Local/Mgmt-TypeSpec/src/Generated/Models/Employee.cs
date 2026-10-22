@@ -42,6 +42,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public EmployeeProperties Properties { get; }
+        public virtual EmployeeProperties Properties { get; }
     }
 }

@@ -1,0 +1,105 @@
+{
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/perf-rg/providers/Microsoft.Compute/virtualMachines/perf-vm",
+  "name": "perf-vm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "location": "westus2",
+  "tags": {
+    "environment": "benchmark",
+    "team": "sdk",
+    "workload": "serialization"
+  },
+  "zones": ["1"],
+  "identity": { "type": "None" },
+  "properties": {
+    "vmId": "11111111-1111-1111-1111-111111111111",
+    "provisioningState": "Succeeded",
+    "hardwareProfile": { "vmSize": "Standard_D4s_v5" },
+    "storageProfile": {
+      "imageReference": {
+        "publisher": "Canonical",
+        "offer": "0001-com-ubuntu-server-jammy",
+        "sku": "22_04-lts-gen2",
+        "version": "latest"
+      },
+      "osDisk": {
+        "name": "perf-osdisk",
+        "osType": "Linux",
+        "createOption": "FromImage",
+        "caching": "ReadWrite",
+        "diskSizeGB": 128,
+        "deleteOption": "Delete",
+        "managedDisk": { "storageAccountType": "Premium_LRS" }
+      },
+      "dataDisks": [
+        {
+          "lun": 0,
+          "name": "perf-data-0",
+          "createOption": "Empty",
+          "caching": "ReadOnly",
+          "diskSizeGB": 256,
+          "deleteOption": "Detach",
+          "managedDisk": { "storageAccountType": "Premium_LRS" }
+        },
+        {
+          "lun": 1,
+          "name": "perf-data-1",
+          "createOption": "Empty",
+          "caching": "None",
+          "diskSizeGB": 512,
+          "deleteOption": "Detach",
+          "managedDisk": { "storageAccountType": "StandardSSD_LRS" }
+        }
+      ]
+    },
+    "osProfile": {
+      "computerName": "perf-vm",
+      "adminUsername": "perfuser",
+      "allowExtensionOperations": true,
+      "linuxConfiguration": {
+        "disablePasswordAuthentication": true,
+        "provisionVMAgent": true,
+        "patchSettings": { "patchMode": "ImageDefault", "assessmentMode": "ImageDefault" }
+      }
+    },
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/perf-rg/providers/Microsoft.Network/networkInterfaces/perf-nic-0",
+          "properties": { "primary": true, "deleteOption": "Detach" }
+        },
+        {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/perf-rg/providers/Microsoft.Network/networkInterfaces/perf-nic-1",
+          "properties": { "primary": false, "deleteOption": "Detach" }
+        }
+      ]
+    },
+    "diagnosticsProfile": { "bootDiagnostics": { "enabled": true } },
+    "securityProfile": {
+      "securityType": "TrustedLaunch",
+      "uefiSettings": { "secureBootEnabled": true, "vTpmEnabled": true }
+    },
+    "additionalCapabilities": { "ultraSSDEnabled": false },
+    "instanceView": {
+      "platformUpdateDomain": 0,
+      "platformFaultDomain": 1,
+      "computerName": "perf-vm",
+      "osName": "ubuntu",
+      "osVersion": "22.04",
+      "hyperVGeneration": "V2",
+      "vmAgent": {
+        "vmAgentVersion": "2.9.1",
+        "statuses": [{ "code": "ProvisioningState/succeeded", "level": "Info", "displayStatus": "Ready" }]
+      },
+      "disks": [
+        {
+          "name": "perf-osdisk",
+          "statuses": [{ "code": "ProvisioningState/succeeded", "level": "Info", "displayStatus": "Provisioning succeeded" }]
+        }
+      ],
+      "statuses": [
+        { "code": "ProvisioningState/succeeded", "level": "Info", "displayStatus": "Provisioning succeeded" },
+        { "code": "PowerState/running", "level": "Info", "displayStatus": "VM running" }
+      ]
+    }
+  }
+}

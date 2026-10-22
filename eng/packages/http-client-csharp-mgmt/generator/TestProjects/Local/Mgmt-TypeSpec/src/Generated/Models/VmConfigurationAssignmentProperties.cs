@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The configuration name. </summary>
         [WirePath("configurationName")]
-        public string ConfigurationName { get; }
+        public virtual string ConfigurationName { get; }
 
         /// <summary> The compliance status. </summary>
         [WirePath("complianceStatus")]
-        public VmConfigurationAssignmentPropertiesComplianceStatus? ComplianceStatus { get; }
+        public virtual VmConfigurationAssignmentPropertiesComplianceStatus? ComplianceStatus { get; }
     }
 }

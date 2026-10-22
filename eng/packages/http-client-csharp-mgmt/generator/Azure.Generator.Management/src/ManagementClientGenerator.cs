@@ -103,6 +103,11 @@ namespace Azure.Generator.Management
             {
                 AddVisitor(new WirePathVisitor());
             }
+            if (Configuration.AdditionalConfigurationOptions.TryGetValue("model-properties-virtual", out var value)
+                && bool.TryParse(value.ToString(), out var modelPropertiesVirtual) && modelPropertiesVirtual)
+            {
+                AddVisitor(new ModelPropertyVirtualVisitor());
+            }
         }
 
         private const string EnableWirePathFeatureFlag = "enable-wire-path-attribute";

@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> enabled. </summary>
         [WirePath("isEnabled")]
-        public bool? IsEnabled { get; }
+        public virtual bool? IsEnabled { get; }
     }
 }

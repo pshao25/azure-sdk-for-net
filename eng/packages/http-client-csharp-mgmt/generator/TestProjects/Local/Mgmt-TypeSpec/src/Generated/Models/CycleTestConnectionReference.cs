@@ -43,7 +43,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The provisioning status. </summary>
         [WirePath("properties.provisioningState")]
-        public string ProvisioningState
+        public virtual string ProvisioningState
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Description of the connection. </summary>
         [WirePath("properties.description")]
-        public string Description
+        public virtual string Description
         {
             get
             {

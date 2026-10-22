@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The private endpoint connection properties. </summary>
         [WirePath("properties")]
-        public PrivateEndpointConnectionProperties Properties { get; set; }
+        public virtual PrivateEndpointConnectionProperties Properties { get; set; }
     }
 }

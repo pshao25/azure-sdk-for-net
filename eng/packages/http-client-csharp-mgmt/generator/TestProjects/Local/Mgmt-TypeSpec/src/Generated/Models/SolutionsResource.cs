@@ -42,18 +42,18 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Resource ID. </summary>
         [WirePath("id")]
-        public ResourceIdentifier Id { get; }
+        public virtual ResourceIdentifier Id { get; }
 
         /// <summary> Resource name. </summary>
         [WirePath("name")]
-        public string Name { get; }
+        public virtual string Name { get; }
 
         /// <summary> Resource type. </summary>
         [WirePath("type")]
-        public string Type { get; }
+        public virtual string Type { get; }
 
         /// <summary> Resource tags. </summary>
         [WirePath("tags")]
-        public IDictionary<string, string> Tags { get; }
+        public virtual IDictionary<string, string> Tags { get; }
     }
 }

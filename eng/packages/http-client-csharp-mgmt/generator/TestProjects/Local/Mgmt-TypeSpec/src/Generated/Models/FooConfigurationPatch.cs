@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public FooSettingsUpdateProperties Properties { get; set; }
+        public virtual FooSettingsUpdateProperties Properties { get; set; }
     }
 }

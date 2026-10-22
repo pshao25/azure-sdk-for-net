@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Tags. </summary>
         [WirePath("tags")]
-        public IDictionary<string, string> Tags { get; }
+        public virtual IDictionary<string, string> Tags { get; }
 
         /// <summary> Gets or sets the Location. </summary>
         [WirePath("location")]
-        public string Location { get; set; }
+        public virtual string Location { get; set; }
     }
 }

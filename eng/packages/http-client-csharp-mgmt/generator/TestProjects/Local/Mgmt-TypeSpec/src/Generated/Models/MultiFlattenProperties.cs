@@ -56,11 +56,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Additional property after inner to verify it is not skipped. </summary>
         [WirePath("disabled")]
-        public bool? Disabled { get; set; }
+        public virtual bool? Disabled { get; set; }
 
         /// <summary> Gets or sets the SelectionType. </summary>
         [WirePath("inner.selectionType")]
-        public string InnerSelectionType
+        public virtual string InnerSelectionType
         {
             get
             {

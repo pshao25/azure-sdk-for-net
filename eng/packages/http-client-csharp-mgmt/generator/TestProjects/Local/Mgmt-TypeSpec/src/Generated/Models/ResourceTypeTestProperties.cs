@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Nullable resource type - this tests the fix for nullable value type serialization. </summary>
         [WirePath("optionalResourceType")]
-        public ResourceType? OptionalResourceType { get; set; }
+        public virtual ResourceType? OptionalResourceType { get; set; }
 
         /// <summary> Status of the resource. </summary>
         [WirePath("status")]
-        public string Status { get; set; }
+        public virtual string Status { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Description. </summary>
         [WirePath("properties.description")]
-        public string TypeAPolyDeviceDescription
+        public virtual string TypeAPolyDeviceDescription
         {
             get
             {

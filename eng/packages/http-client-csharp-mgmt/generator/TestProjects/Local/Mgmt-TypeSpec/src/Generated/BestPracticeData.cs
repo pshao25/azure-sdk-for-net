@@ -41,10 +41,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public BestPracticeProperties Properties { get; set; }
+        public virtual BestPracticeProperties Properties { get; set; }
 
         /// <summary> The extended location of the resource. </summary>
         [WirePath("extendedLocation")]
-        public ExtendedLocationOptionalModel ExtendedLocation { get; set; }
+        public virtual ExtendedLocationOptionalModel ExtendedLocation { get; set; }
     }
 }

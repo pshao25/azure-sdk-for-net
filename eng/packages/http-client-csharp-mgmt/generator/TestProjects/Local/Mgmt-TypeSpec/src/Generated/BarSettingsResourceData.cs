@@ -79,7 +79,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the StringArray. </summary>
         [WirePath("stringArray")]
-        public IList<string> StringArray { get; }
+        public virtual IList<string> StringArray { get; }
 
         /// <summary> Gets or sets the Property. </summary>
         [WirePath("property")]
@@ -102,11 +102,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the DiscriminatorProperty. </summary>
         [WirePath("discriminatorProperty")]
-        public LimitJsonObject DiscriminatorProperty { get; set; }
+        public virtual LimitJsonObject DiscriminatorProperty { get; set; }
 
         /// <summary> enabled. </summary>
         [WirePath("properties.isEnabled")]
-        public bool? IsEnabled
+        public virtual bool? IsEnabled
         {
             get
             {
@@ -116,7 +116,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> enabled. </summary>
         [WirePath("property.left")]
-        public string PropertyLeft
+        public virtual string PropertyLeft
         {
             get
             {
@@ -130,7 +130,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> enabled. </summary>
         [WirePath("anotherProperty.left")]
-        public string AnotherPropertyLeft
+        public virtual string AnotherPropertyLeft
         {
             get
             {
@@ -144,7 +144,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the InnerProp1. </summary>
         [WirePath("flattenedNestedProperty.innerProp1")]
-        public int? InnerProp1
+        public virtual int? InnerProp1
         {
             get
             {
@@ -162,7 +162,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the InnerProp2. </summary>
         [WirePath("flattenedNestedProperty.innerProp2")]
-        public string InnerProp2
+        public virtual string InnerProp2
         {
             get
             {
@@ -180,7 +180,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the MiddleProp1. </summary>
         [WirePath("flattenedNestedProperty.middleProp1")]
-        public int MiddleProp1
+        public virtual int MiddleProp1
         {
             get
             {
@@ -198,7 +198,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the MiddleProp2. </summary>
         [WirePath("flattenedNestedProperty.middleProp2")]
-        public IDictionary<string, string> MiddleProp2
+        public virtual IDictionary<string, string> MiddleProp2
         {
             get
             {
@@ -212,7 +212,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the Prop1. </summary>
         [WirePath("flattenedNestedProperty.prop1")]
-        public IList<string> Prop1
+        public virtual IList<string> Prop1
         {
             get
             {
@@ -226,7 +226,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the Prop2. </summary>
         [WirePath("flattenedNestedProperty.prop2")]
-        public int Prop2
+        public virtual int Prop2
         {
             get
             {
@@ -244,7 +244,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Required collection used by the optional flattened model scenario. </summary>
         [WirePath("optionalFlattenProperty.randomCollectionProp")]
-        public IList<string> OptionalFlattenPropertyRandomCollectionProp
+        public virtual IList<string> OptionalFlattenPropertyRandomCollectionProp
         {
             get
             {

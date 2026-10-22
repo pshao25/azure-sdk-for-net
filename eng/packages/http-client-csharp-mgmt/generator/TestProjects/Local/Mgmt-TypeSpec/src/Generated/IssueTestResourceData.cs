@@ -45,6 +45,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public IssueTestBaseProperties Properties { get; set; }
+        public virtual IssueTestBaseProperties Properties { get; set; }
     }
 }

@@ -51,7 +51,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the JobName. </summary>
         [WirePath("properties.jobName")]
-        public string JobName
+        public virtual string JobName
         {
             get
             {

@@ -43,7 +43,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> enabled. </summary>
         [WirePath("properties.left")]
-        public string BarQuotaLeft
+        public virtual string BarQuotaLeft
         {
             get
             {

@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public PlaywrightQuotaProperties Properties { get; set; }
+        public virtual PlaywrightQuotaProperties Properties { get; set; }
     }
 }

@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Disclaimer. </summary>
         [WirePath("disclaimer")]
-        public string Disclaimer { get; }
+        public virtual string Disclaimer { get; }
     }
 }

@@ -44,18 +44,18 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Azure subscription id for the the marketplace offer is purchased from. </summary>
         [WirePath("subscriptionId")]
-        public string SubscriptionId { get; set; }
+        public virtual string SubscriptionId { get; set; }
 
         /// <summary> Marketplace subscription status. </summary>
         [WirePath("subscriptionStatus")]
-        public MarketplaceSubscriptionStatus? SubscriptionStatus { get; }
+        public virtual MarketplaceSubscriptionStatus? SubscriptionStatus { get; }
 
         /// <summary> Marketplace SaaS Resource Id. </summary>
         [WirePath("saasResourceId")]
-        public string SaasResourceId { get; set; }
+        public virtual string SaasResourceId { get; set; }
 
         /// <summary> Offer details for the marketplace that is selected by the user. </summary>
         [WirePath("offerDetails")]
-        public OfferDetails OfferDetails { get; set; }
+        public virtual OfferDetails OfferDetails { get; set; }
     }
 }
