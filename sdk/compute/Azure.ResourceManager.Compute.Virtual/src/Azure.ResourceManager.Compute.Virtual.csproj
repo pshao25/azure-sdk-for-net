@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>1.17.0-beta.1</Version>
+    <PackageId>Azure.ResourceManager.Compute.Virtual</PackageId>
+    <AssemblyName>Azure.ResourceManager.Compute.Virtual</AssemblyName>
+    <RootNamespace>Azure.ResourceManager.Compute</RootNamespace>
+    <Description>Microsoft Azure management client SDK for Azure resource provider Microsoft.Compute.</Description>
+    <PackageTags>azure;management;compute</PackageTags>
+    <DisableEnhancedAnalysis>true</DisableEnhancedAnalysis>
+  </PropertyGroup>
+</Project>
