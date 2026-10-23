@@ -25,25 +25,25 @@ public class VirtualMachinePropertyReadBenchmarks
         var response = new BinaryData(File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "VirtualMachine.json")));
         var options = new ModelReaderWriterOptions("W");
 
-        var originalGetter = typeof(OriginalVm).GetProperty(nameof(OriginalVm.Zones))!.GetMethod!;
-        var virtualGetter = typeof(VirtualVm).GetProperty(nameof(VirtualVm.Zones))!.GetMethod!;
+        var originalGetter = typeof(OriginalVm).GetProperty(nameof(OriginalVm.ETag))!.GetMethod!;
+        var virtualGetter = typeof(VirtualVm).GetProperty(nameof(VirtualVm.ETag))!.GetMethod!;
         if (originalGetter.IsVirtual || !virtualGetter.IsVirtual || virtualGetter.IsFinal)
         {
-            throw new InvalidOperationException("Zones does not have the expected virtual modifiers.");
+            throw new InvalidOperationException("ETag does not have the expected virtual modifiers.");
         }
 
         _original = ModelReaderWriter.Read<OriginalVm>(response, options, OriginalContext.Default)!;
         _virtual = ModelReaderWriter.Read<VirtualVm>(response, options, VirtualContext.Default)!;
 
-        if (ReadZonesOriginal().Count != 1 || ReadZonesVirtual().Count != 1)
+        if (ReadETagOriginal() != "perf-etag" || ReadETagVirtual() != "perf-etag")
         {
-            throw new InvalidOperationException("Zones was not initialized correctly.");
+            throw new InvalidOperationException("ETag was not initialized correctly.");
         }
     }
 
     [Benchmark(Baseline = true)]
-    public IList<string> ReadZonesOriginal() => _original.Zones;
+    public string ReadETagOriginal() => _original.ETag;
 
     [Benchmark]
-    public IList<string> ReadZonesVirtual() => _virtual.Zones;
+    public string ReadETagVirtual() => _virtual.ETag;
 }

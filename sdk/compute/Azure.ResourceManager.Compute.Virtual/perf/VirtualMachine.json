@@ -3,6 +3,7 @@
   "name": "perf-vm",
   "type": "Microsoft.Compute/virtualMachines",
   "location": "westus2",
+  "etag": "perf-etag",
   "tags": {
     "environment": "benchmark",
     "team": "sdk",

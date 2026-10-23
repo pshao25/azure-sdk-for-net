@@ -63,6 +63,7 @@ public class VirtualMachineSerializationBenchmarks
         _virtual = ModelReaderWriter.Read<VirtualVm>(_response, _options, VirtualContext.Default)!;
         if (_original.Name != "perf-vm" || _virtual.Name != "perf-vm"
             || _original.Location.ToString() != "westus2" || _virtual.Location.ToString() != "westus2"
+            || _original.ETag != "perf-etag" || _virtual.ETag != "perf-etag"
             || _original.Id != _virtual.Id || _original.Tags.Count != 3 || _virtual.Tags.Count != 3
             || _original.HardwareProfile.VmSize.ToString() != "Standard_D4s_v5"
             || _virtual.HardwareProfile.VmSize.ToString() != "Standard_D4s_v5"
