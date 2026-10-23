@@ -49,11 +49,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The extended location of the resource. </summary>
         [WirePath("extendedLocation")]
-        public virtual ExtendedLocation ExtendedLocation { get; set; }
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary> something. </summary>
         [WirePath("properties.something")]
-        public virtual string Something
+        public string Something
         {
             get
             {
@@ -76,7 +76,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
         ///       remaining non-nullable T on the inner model and the model factory body.
         /// </summary>
         [WirePath("properties.requiredInt")]
-        public virtual int? RequiredInt
+        public int? RequiredInt
         {
             get
             {
@@ -97,7 +97,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Required fixed (closed) enum. </summary>
         [WirePath("properties.requiredFixedEnum")]
-        public virtual ZooFixedMode? RequiredFixedEnum
+        public ZooFixedMode? RequiredFixedEnum
         {
             get
             {
@@ -118,7 +118,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Required extensible enum (union). </summary>
         [WirePath("properties.requiredExtensibleEnum")]
-        public virtual ZooProvisioningState? RequiredExtensibleEnum
+        public ZooProvisioningState? RequiredExtensibleEnum
         {
             get
             {
@@ -143,7 +143,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
         ///       on the public property under the unified wrapper-optionality rule.
         /// </summary>
         [WirePath("properties.requiredString")]
-        public virtual string RequiredString
+        public string RequiredString
         {
             get
             {

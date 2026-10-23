@@ -41,6 +41,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the UniqueId. </summary>
         [WirePath("uniqueId")]
-        public virtual string UniqueId { get; }
+        public string UniqueId { get; }
     }
 }

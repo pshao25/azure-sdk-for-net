@@ -40,10 +40,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the InnerProp1. </summary>
         [WirePath("innerProp1")]
-        public virtual int? InnerProp1 { get; set; }
+        public int? InnerProp1 { get; set; }
 
         /// <summary> Gets or sets the InnerProp2. </summary>
         [WirePath("innerProp2")]
-        public virtual string InnerProp2 { get; set; }
+        public string InnerProp2 { get; set; }
     }
 }

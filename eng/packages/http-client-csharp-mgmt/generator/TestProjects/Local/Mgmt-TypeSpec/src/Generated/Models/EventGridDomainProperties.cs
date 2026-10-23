@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Domain endpoint. </summary>
         [WirePath("endpoint")]
-        public virtual string Endpoint { get; set; }
+        public string Endpoint { get; set; }
     }
 }

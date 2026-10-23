@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the Properties. </summary>
         [WirePath("properties")]
-        public virtual TrafficEndpointProperties Properties { get; set; }
+        public TrafficEndpointProperties Properties { get; set; }
     }
 }

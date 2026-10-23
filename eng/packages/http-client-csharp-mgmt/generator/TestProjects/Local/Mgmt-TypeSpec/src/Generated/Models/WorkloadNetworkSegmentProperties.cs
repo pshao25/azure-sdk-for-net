@@ -39,18 +39,18 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Display name of the segment. </summary>
         [WirePath("displayName")]
-        public virtual string DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary> Connected gateway. </summary>
         [WirePath("connectedGateway")]
-        public virtual string ConnectedGateway { get; set; }
+        public string ConnectedGateway { get; set; }
 
         /// <summary> Subnet for the segment. </summary>
         [WirePath("subnet")]
-        public virtual string Subnet { get; set; }
+        public string Subnet { get; set; }
 
         /// <summary> Provisioning state of the resource. </summary>
         [WirePath("provisioningState")]
-        public virtual string ProvisioningState { get; }
+        public string ProvisioningState { get; }
     }
 }

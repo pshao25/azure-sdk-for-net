@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The subscription-level location-based Playwright quota resource free-trial properties. </summary>
         [WirePath("freeTrial")]
-        public virtual string FreeTrial { get; }
+        public string FreeTrial { get; }
 
         /// <summary> The status of the last resource operation. </summary>
         [WirePath("provisioningState")]
-        public virtual string ProvisioningState { get; }
+        public string ProvisioningState { get; }
     }
 }

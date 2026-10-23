@@ -35,6 +35,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The recommended availability zone pair. </summary>
         [WirePath("recommendedAvailabilityZonePair")]
-        public virtual string RecommendedAvailabilityZonePair { get; }
+        public string RecommendedAvailabilityZonePair { get; }
     }
 }

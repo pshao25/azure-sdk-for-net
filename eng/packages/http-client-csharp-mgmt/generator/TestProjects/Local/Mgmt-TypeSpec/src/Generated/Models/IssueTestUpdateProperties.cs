@@ -38,6 +38,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Property specific to updates. </summary>
         [WirePath("updateOnlyValue")]
-        public virtual string UpdateOnlyValue { get; set; }
+        public string UpdateOnlyValue { get; set; }
     }
 }

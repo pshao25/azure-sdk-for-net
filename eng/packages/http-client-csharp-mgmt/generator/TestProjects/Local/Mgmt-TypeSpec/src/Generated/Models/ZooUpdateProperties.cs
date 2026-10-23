@@ -50,7 +50,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> something. </summary>
         [WirePath("something")]
-        public virtual string Something { get; set; }
+        public string Something { get; set; }
 
         /// <summary>
         /// Required value-type property. Used to validate that required value types
@@ -59,15 +59,15 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
         ///       remaining non-nullable T on the inner model and the model factory body.
         /// </summary>
         [WirePath("requiredInt")]
-        public virtual int? RequiredInt { get; set; }
+        public int? RequiredInt { get; set; }
 
         /// <summary> Required fixed (closed) enum. </summary>
         [WirePath("requiredFixedEnum")]
-        public virtual ZooFixedMode? RequiredFixedEnum { get; set; }
+        public ZooFixedMode? RequiredFixedEnum { get; set; }
 
         /// <summary> Required extensible enum (union). </summary>
         [WirePath("requiredExtensibleEnum")]
-        public virtual ZooProvisioningState? RequiredExtensibleEnum { get; set; }
+        public ZooProvisioningState? RequiredExtensibleEnum { get; set; }
 
         /// <summary>
         /// Required reference-type property. Used to validate that required reference
@@ -75,6 +75,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
         ///       on the public property under the unified wrapper-optionality rule.
         /// </summary>
         [WirePath("requiredString")]
-        public virtual string RequiredString { get; set; }
+        public string RequiredString { get; set; }
     }
 }

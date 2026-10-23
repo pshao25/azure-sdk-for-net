@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Marketplace details of the resource. </summary>
         [WirePath("marketplace")]
-        public virtual MarketplaceDetails Marketplace { get; set; }
+        public MarketplaceDetails Marketplace { get; set; }
 
         /// <summary> Details of the user. </summary>
         [WirePath("user")]
-        public virtual UserDetails User { get; set; }
+        public UserDetails User { get; set; }
 
         /// <summary> Gets or sets the AccessControlEnabled. </summary>
         [WirePath("accessControlEnabled")]
-        public virtual bool? AccessControlEnabled { get; set; }
+        public bool? AccessControlEnabled { get; set; }
     }
 }

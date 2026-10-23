@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The WorkloadNetworkSegment items on this page. </summary>
         [WirePath("value")]
-        public virtual IList<WorkloadNetworkSegmentData> Value { get; }
+        public IList<WorkloadNetworkSegmentData> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public virtual Uri NextLink { get; }
+        public Uri NextLink { get; }
     }
 }

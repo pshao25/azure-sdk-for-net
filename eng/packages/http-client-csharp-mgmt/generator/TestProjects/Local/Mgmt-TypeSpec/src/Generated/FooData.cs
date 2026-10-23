@@ -79,19 +79,19 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The extended location of the resource. </summary>
         [WirePath("extendedLocation")]
-        public virtual ExtendedLocation ExtendedLocation { get; set; }
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary> The managed service identities assigned to this resource. </summary>
         [WirePath("identity")]
-        public virtual ManagedServiceIdentity Identity { get; set; }
+        public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary> Details of the resource plan. </summary>
         [WirePath("plan")]
-        public virtual ArmPlan Plan { get; set; }
+        public ArmPlan Plan { get; set; }
 
         /// <summary> the service url. </summary>
         [WirePath("properties.serviceUrl")]
-        public virtual Uri ServiceUri
+        public Uri ServiceUri
         {
             get
             {
@@ -109,7 +109,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> something. </summary>
         [WirePath("properties.something")]
-        public virtual ManagedServiceIdentity Something
+        public ManagedServiceIdentity Something
         {
             get
             {
@@ -127,7 +127,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> boolean value. </summary>
         [WirePath("properties.boolValue")]
-        public virtual bool? BoolValue
+        public bool? BoolValue
         {
             get
             {
@@ -145,7 +145,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> float value. </summary>
         [WirePath("properties.floatValue")]
-        public virtual float? FloatValue
+        public float? FloatValue
         {
             get
             {
@@ -163,7 +163,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> double value. </summary>
         [WirePath("properties.doubleValue")]
-        public virtual double? DoubleValue
+        public double? DoubleValue
         {
             get
             {
@@ -181,7 +181,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the Prop1. </summary>
         [WirePath("properties.prop1")]
-        public virtual IList<string> Prop1
+        public IList<string> Prop1
         {
             get
             {
@@ -195,7 +195,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the Prop2. </summary>
         [WirePath("properties.prop2")]
-        public virtual IList<int> Prop2
+        public IList<int> Prop2
         {
             get
             {
@@ -209,7 +209,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> ETag property for testing etag parameter name generation. </summary>
         [WirePath("properties.etag")]
-        public virtual ETag? ETag
+        public ETag? ETag
         {
             get
             {
@@ -227,7 +227,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> WritableSubResource property for testing WritableSubResource type replacement. </summary>
         [WirePath("properties.writableSubResourceProp")]
-        public virtual WritableSubResource WritableSubResourceProp
+        public WritableSubResource WritableSubResourceProp
         {
             get
             {
@@ -245,7 +245,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the Properties. </summary>
         [WirePath("properties.nestedProperty.properties")]
-        public virtual FooProperties NestedPropertyProperties
+        public FooProperties NestedPropertyProperties
         {
             get
             {
@@ -263,7 +263,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the FlattenedProperty. </summary>
         [WirePath("properties.optionalProperty.flattenedProperty")]
-        public virtual IList<string> FlattenedProperty
+        public IList<string> FlattenedProperty
         {
             get
             {
@@ -277,7 +277,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Specifies the gallery applications that should be made available. </summary>
         [WirePath("properties.vmProfile.applicationProfile.galleryApplications")]
-        public virtual IList<string> VmGalleryApplications
+        public IList<string> VmGalleryApplications
         {
             get
             {
@@ -291,7 +291,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the Id. </summary>
         [WirePath("properties.computeFleetVmProfile.capacityReservation.capacityReservationGroup.id")]
-        public virtual ResourceIdentifier ComputeFleetVmCapacityReservationGroupId
+        public ResourceIdentifier ComputeFleetVmCapacityReservationGroupId
         {
             get
             {

@@ -52,7 +52,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Id. </summary>
         [WirePath("capacityReservation.capacityReservationGroup.id")]
-        public virtual ResourceIdentifier CapacityReservationGroupId
+        public ResourceIdentifier CapacityReservationGroupId
         {
             get
             {

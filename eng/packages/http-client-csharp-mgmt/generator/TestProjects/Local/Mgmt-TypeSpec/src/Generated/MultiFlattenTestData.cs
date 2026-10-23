@@ -45,7 +45,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
         /// <summary> Required property that will be customized via [CodeGenMember] to change its position. </summary>
         [CodeGenMember("Channel")]
         [WirePath("properties.channel")]
-        public virtual FlattenChannel? Channel
+        public FlattenChannel? Channel
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Additional property after inner to verify it is not skipped. </summary>
         [WirePath("properties.disabled")]
-        public virtual bool? Disabled
+        public bool? Disabled
         {
             get
             {
@@ -81,7 +81,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the SelectionType. </summary>
         [WirePath("properties.inner.selectionType")]
-        public virtual string InnerSelectionType
+        public string InnerSelectionType
         {
             get
             {

@@ -37,7 +37,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the HistoricalData. </summary>
         [WirePath("predictionInput.historicalData")]
-        public virtual IReadOnlyList<long> PredictionInputHistoricalData
+        public IReadOnlyList<long> PredictionInputHistoricalData
         {
             get
             {

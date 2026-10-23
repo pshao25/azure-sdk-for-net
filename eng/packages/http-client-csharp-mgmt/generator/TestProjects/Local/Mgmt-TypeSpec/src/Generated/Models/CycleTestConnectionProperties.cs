@@ -40,10 +40,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The provisioning status. </summary>
         [WirePath("provisioningState")]
-        public virtual string ProvisioningState { get; }
+        public string ProvisioningState { get; }
 
         /// <summary> Description of the connection. </summary>
         [WirePath("description")]
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
     }
 }

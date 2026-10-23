@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Resource Etag. </summary>
         [WirePath("etag")]
-        public virtual string ETag { get; }
+        public string ETag { get; }
     }
 }

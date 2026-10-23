@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual EventGridPrivateEndpointConnectionProperties Properties { get; set; }
+        public EventGridPrivateEndpointConnectionProperties Properties { get; set; }
     }
 }

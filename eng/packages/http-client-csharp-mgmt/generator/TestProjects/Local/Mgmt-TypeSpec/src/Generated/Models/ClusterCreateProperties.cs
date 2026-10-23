@@ -50,6 +50,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Whether or not public network traffic can access the Redis cluster. </summary>
         [WirePath("publicNetworkAccess")]
-        public virtual PublicNetworkAccess? PublicNetworkAccess { get; set; }
+        public PublicNetworkAccess? PublicNetworkAccess { get; set; }
     }
 }

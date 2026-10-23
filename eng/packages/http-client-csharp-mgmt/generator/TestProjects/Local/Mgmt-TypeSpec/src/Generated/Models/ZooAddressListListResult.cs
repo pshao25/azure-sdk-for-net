@@ -39,10 +39,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The ZooAddress items on this page. </summary>
         [WirePath("value")]
-        public virtual IList<SubResource> Value { get; }
+        public IList<SubResource> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public virtual Uri NextLink { get; }
+        public Uri NextLink { get; }
     }
 }

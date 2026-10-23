@@ -53,6 +53,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Properties. </summary>
         [WirePath("properties")]
-        public virtual FooProperties Properties { get; set; }
+        public FooProperties Properties { get; set; }
     }
 }

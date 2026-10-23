@@ -40,7 +40,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The managed application definition display name. </summary>
         [WirePath("properties.displayName")]
-        public virtual string SolutionsApplicationDefinitionDisplayName
+        public string SolutionsApplicationDefinitionDisplayName
         {
             get
             {

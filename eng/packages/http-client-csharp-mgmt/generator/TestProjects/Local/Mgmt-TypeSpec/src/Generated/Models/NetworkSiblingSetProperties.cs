@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> List of network siblings. </summary>
         [WirePath("siblings")]
-        public virtual IList<NetworkSibling> Siblings { get; }
+        public IList<NetworkSibling> Siblings { get; }
 
         /// <summary> Status of the query. </summary>
         [WirePath("status")]
-        public virtual string Status { get; }
+        public string Status { get; }
     }
 }

@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The PolicyAssignment items on this page. </summary>
         [WirePath("value")]
-        public virtual IList<PolicyAssignmentData> Value { get; }
+        public IList<PolicyAssignmentData> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public virtual Uri NextLink { get; }
+        public Uri NextLink { get; }
     }
 }

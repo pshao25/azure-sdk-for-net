@@ -39,14 +39,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The private link resource group id. </summary>
         [WirePath("groupId")]
-        public virtual string GroupId { get; }
+        public string GroupId { get; }
 
         /// <summary> The private link resource required member names. </summary>
         [WirePath("requiredMembers")]
-        public virtual IReadOnlyList<string> RequiredMembers { get; }
+        public IReadOnlyList<string> RequiredMembers { get; }
 
         /// <summary> The private link resource private link DNS zone name. </summary>
         [WirePath("requiredZoneNames")]
-        public virtual IList<string> RequiredZoneNames { get; }
+        public IList<string> RequiredZoneNames { get; }
     }
 }

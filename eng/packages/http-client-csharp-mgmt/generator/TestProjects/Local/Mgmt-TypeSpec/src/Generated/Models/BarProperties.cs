@@ -41,22 +41,22 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> the service url. </summary>
         [WirePath("serviceUrl")]
-        public virtual Uri ServiceUri { get; set; }
+        public Uri ServiceUri { get; set; }
 
         /// <summary> something. </summary>
         [WirePath("something")]
-        public virtual string Something { get; set; }
+        public string Something { get; set; }
 
         /// <summary> boolean value. </summary>
         [WirePath("boolValue")]
-        public virtual bool? BoolValue { get; set; }
+        public bool? BoolValue { get; set; }
 
         /// <summary> float value. </summary>
         [WirePath("floatValue")]
-        public virtual float? FloatValue { get; set; }
+        public float? FloatValue { get; set; }
 
         /// <summary> double value. </summary>
         [WirePath("doubleValue")]
-        public virtual double? DoubleValue { get; set; }
+        public double? DoubleValue { get; set; }
     }
 }

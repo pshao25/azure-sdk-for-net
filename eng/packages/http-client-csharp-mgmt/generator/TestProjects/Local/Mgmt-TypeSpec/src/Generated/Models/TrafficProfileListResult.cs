@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The TrafficProfile items on this page. </summary>
         [WirePath("value")]
-        public virtual IList<TrafficProfileData> Value { get; }
+        public IList<TrafficProfileData> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public virtual Uri NextLink { get; }
+        public Uri NextLink { get; }
     }
 }

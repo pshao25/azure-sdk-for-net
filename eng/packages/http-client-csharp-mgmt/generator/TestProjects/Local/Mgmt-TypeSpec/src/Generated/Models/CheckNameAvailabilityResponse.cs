@@ -39,14 +39,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the NameAvailable. </summary>
         [WirePath("nameAvailable")]
-        public virtual bool NameAvailable { get; }
+        public bool NameAvailable { get; }
 
         /// <summary> Gets the Reason. </summary>
         [WirePath("reason")]
-        public virtual string Reason { get; }
+        public string Reason { get; }
 
         /// <summary> Gets the Message. </summary>
         [WirePath("message")]
-        public virtual string Message { get; }
+        public string Message { get; }
     }
 }

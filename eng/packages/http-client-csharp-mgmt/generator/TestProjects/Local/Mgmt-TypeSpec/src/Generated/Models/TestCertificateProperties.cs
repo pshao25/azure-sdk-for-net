@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Thumbprint. </summary>
         [WirePath("thumbprint")]
-        public virtual string Thumbprint { get; }
+        public string Thumbprint { get; }
     }
 }

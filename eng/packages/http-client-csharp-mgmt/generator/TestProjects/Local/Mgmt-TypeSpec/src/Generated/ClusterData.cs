@@ -46,7 +46,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Enabled by default. If highAvailability is disabled, the data set is not replicated. </summary>
         [WirePath("properties.highAvailability")]
-        public virtual HighAvailability? HighAvailability
+        public HighAvailability? HighAvailability
         {
             get
             {
@@ -64,7 +64,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The minimum TLS version for the cluster to support, e.g. '1.2'. </summary>
         [WirePath("properties.minimumTlsVersion")]
-        public virtual TlsVersion? MinimumTlsVersion
+        public TlsVersion? MinimumTlsVersion
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> DNS name of the cluster endpoint. </summary>
         [WirePath("properties.hostName")]
-        public virtual string HostName
+        public string HostName
         {
             get
             {
@@ -92,7 +92,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Current provisioning status of the cluster. </summary>
         [WirePath("properties.provisioningState")]
-        public virtual ProvisioningState? ProvisioningState
+        public ProvisioningState? ProvisioningState
         {
             get
             {
@@ -102,7 +102,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Explains the current redundancy strategy of the cluster. </summary>
         [WirePath("properties.redundancyMode")]
-        public virtual RedundancyMode? RedundancyMode
+        public RedundancyMode? RedundancyMode
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Current resource status of the cluster. </summary>
         [WirePath("properties.resourceState")]
-        public virtual ResourceState? ResourceState
+        public ResourceState? ResourceState
         {
             get
             {
@@ -122,7 +122,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Version of redis the cluster supports, e.g. '6'. </summary>
         [WirePath("properties.redisVersion")]
-        public virtual string RedisVersion
+        public string RedisVersion
         {
             get
             {
@@ -132,7 +132,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> List of private endpoint connections. </summary>
         [WirePath("properties.privateEndpointConnections")]
-        public virtual IReadOnlyList<RedisPrivateEndpointConnection> PrivateEndpointConnections
+        public IReadOnlyList<RedisPrivateEndpointConnection> PrivateEndpointConnections
         {
             get
             {
@@ -146,7 +146,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the CustomerManagedKeyEncryption. </summary>
         [WirePath("properties.encryption.customerManagedKeyEncryption")]
-        public virtual CustomerManagedKeyEncryption CustomerManagedKeyEncryption
+        public CustomerManagedKeyEncryption CustomerManagedKeyEncryption
         {
             get
             {
@@ -164,7 +164,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the MaintenanceWindows. </summary>
         [WirePath("properties.maintenanceConfiguration.maintenanceWindows")]
-        public virtual IList<MaintenanceWindow> MaintenanceWindows
+        public IList<MaintenanceWindow> MaintenanceWindows
         {
             get
             {
@@ -178,7 +178,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Whether or not public network traffic can access the Redis cluster. </summary>
         [WirePath("properties.publicNetworkAccess")]
-        public virtual PublicNetworkAccess? PublicNetworkAccess
+        public PublicNetworkAccess? PublicNetworkAccess
         {
             get
             {

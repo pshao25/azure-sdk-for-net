@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Connection status. </summary>
         [WirePath("status")]
-        public virtual string Status { get; set; }
+        public string Status { get; set; }
 
         /// <summary> Description. </summary>
         [WirePath("description")]
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
     }
 }

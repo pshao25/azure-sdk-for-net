@@ -52,7 +52,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> A base property that won't be redefined. </summary>
         [WirePath("properties.baseOnlyProperty")]
-        public virtual string BaseOnlyProperty
+        public string BaseOnlyProperty
         {
             get
             {
@@ -73,7 +73,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
         /// Similar to accessKeysAuthentication in the original RedisEnterprise issue.
         /// </summary>
         [WirePath("properties.overridableProperty")]
-        public virtual string OverridableProperty
+        public string OverridableProperty
         {
             get
             {

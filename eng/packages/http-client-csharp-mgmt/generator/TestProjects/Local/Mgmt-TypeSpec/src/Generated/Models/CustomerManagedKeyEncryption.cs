@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the KeyEncryptionKeyIdentity. </summary>
         [WirePath("keyEncryptionKeyIdentity")]
-        public virtual KeyEncryptionKeyIdentity KeyEncryptionKeyIdentity { get; set; }
+        public KeyEncryptionKeyIdentity KeyEncryptionKeyIdentity { get; set; }
 
         /// <summary> Gets or sets the KeyEncryptionKeyUri. </summary>
         [WirePath("keyEncryptionKeyUrl")]
-        public virtual string KeyEncryptionKeyUri { get; set; }
+        public string KeyEncryptionKeyUri { get; set; }
     }
 }

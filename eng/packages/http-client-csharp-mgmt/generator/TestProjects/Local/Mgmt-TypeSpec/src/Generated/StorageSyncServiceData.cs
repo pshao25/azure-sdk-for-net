@@ -48,11 +48,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The managed service identities assigned to this resource. </summary>
         [WirePath("identity")]
-        public virtual ManagedServiceIdentity Identity { get; }
+        public ManagedServiceIdentity Identity { get; }
 
         /// <summary> The storage sync service location. </summary>
         [WirePath("properties.storageSyncServiceLocation")]
-        public virtual string StorageSyncServiceLocation
+        public string StorageSyncServiceLocation
         {
             get
             {

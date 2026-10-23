@@ -36,6 +36,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Update properties. </summary>
         [WirePath("derivedProp")]
-        public virtual string DerivedProp { get; }
+        public string DerivedProp { get; }
     }
 }

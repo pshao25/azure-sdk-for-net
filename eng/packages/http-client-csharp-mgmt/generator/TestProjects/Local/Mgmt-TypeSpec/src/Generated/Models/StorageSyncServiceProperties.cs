@@ -35,6 +35,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The storage sync service location. </summary>
         [WirePath("storageSyncServiceLocation")]
-        public virtual string StorageSyncServiceLocation { get; }
+        public string StorageSyncServiceLocation { get; }
     }
 }

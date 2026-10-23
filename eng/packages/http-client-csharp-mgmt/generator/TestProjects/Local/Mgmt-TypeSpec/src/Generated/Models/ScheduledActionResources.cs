@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual ScheduledActionsExtensionProperties Properties { get; }
+        public ScheduledActionsExtensionProperties Properties { get; }
     }
 }

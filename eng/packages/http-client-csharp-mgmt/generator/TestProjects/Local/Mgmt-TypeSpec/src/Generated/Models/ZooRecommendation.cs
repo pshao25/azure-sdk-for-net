@@ -39,10 +39,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The recommended value. </summary>
         [WirePath("recommendedValue")]
-        public virtual string RecommendedValue { get; }
+        public string RecommendedValue { get; }
 
         /// <summary> The reason for the recommendation. </summary>
         [WirePath("reason")]
-        public virtual string Reason { get; }
+        public string Reason { get; }
     }
 }

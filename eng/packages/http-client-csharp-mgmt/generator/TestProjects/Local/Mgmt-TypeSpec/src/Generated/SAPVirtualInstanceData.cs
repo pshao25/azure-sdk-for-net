@@ -46,7 +46,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets or sets the Name. </summary>
         [WirePath("properties.name")]
-        public virtual string SAPVirtualInstanceName
+        public string SAPVirtualInstanceName
         {
             get
             {

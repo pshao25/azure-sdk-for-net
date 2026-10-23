@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The Target items on this page. </summary>
         [WirePath("value")]
-        public virtual IList<TargetData> Value { get; }
+        public IList<TargetData> Value { get; }
 
         /// <summary> The link to the next page of items. </summary>
         [WirePath("nextLink")]
-        public virtual Uri NextLink { get; }
+        public Uri NextLink { get; }
     }
 }

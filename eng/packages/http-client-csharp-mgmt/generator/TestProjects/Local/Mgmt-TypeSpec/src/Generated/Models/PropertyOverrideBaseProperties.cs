@@ -41,13 +41,13 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> A base property that won't be redefined. </summary>
         [WirePath("baseOnlyProperty")]
-        public virtual string BaseOnlyProperty { get; set; }
+        public string BaseOnlyProperty { get; set; }
 
         /// <summary>
         /// This property will be redefined in derived models with a default value.
         /// Similar to accessKeysAuthentication in the original RedisEnterprise issue.
         /// </summary>
         [WirePath("overridableProperty")]
-        public virtual string OverridableProperty { get; set; }
+        public string OverridableProperty { get; set; }
     }
 }

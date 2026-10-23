@@ -43,7 +43,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Simple property. </summary>
         [WirePath("displayName")]
-        public virtual string DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// Nested complex object - its inner properties are flattened.
@@ -54,11 +54,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Read-only property. </summary>
         [WirePath("status")]
-        public virtual string Status { get; }
+        public string Status { get; }
 
         /// <summary> Inner value that gets flattened. </summary>
         [WirePath("nestedConfig.innerValue")]
-        public virtual string InnerValue
+        public string InnerValue
         {
             get
             {
@@ -76,7 +76,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Inner flag that gets flattened. </summary>
         [WirePath("nestedConfig.innerFlag")]
-        public virtual bool? InnerFlag
+        public bool? InnerFlag
         {
             get
             {

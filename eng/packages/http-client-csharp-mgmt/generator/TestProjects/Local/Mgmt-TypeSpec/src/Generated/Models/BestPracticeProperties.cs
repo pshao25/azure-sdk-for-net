@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The provisioning state of the resource. </summary>
         [WirePath("provisioningState")]
-        public virtual ResourceProvisioningState? ProvisioningState { get; }
+        public ResourceProvisioningState? ProvisioningState { get; }
 
         /// <summary> The description of the best practice. </summary>
         [WirePath("description")]
-        public virtual string Description { get; set; }
+        public string Description { get; set; }
     }
 }

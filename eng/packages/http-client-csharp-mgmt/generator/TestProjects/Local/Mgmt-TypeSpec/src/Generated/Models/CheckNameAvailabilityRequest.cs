@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The name of the resource for which availability needs to be checked. </summary>
         [WirePath("name")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary> The resource type. </summary>
         [WirePath("type")]
-        public virtual string Type { get; set; }
+        public string Type { get; set; }
     }
 }

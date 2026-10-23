@@ -52,7 +52,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Specifies the gallery applications that should be made available. </summary>
         [WirePath("applicationProfile.galleryApplications")]
-        public virtual IList<string> GalleryApplications
+        public IList<string> GalleryApplications
         {
             get
             {

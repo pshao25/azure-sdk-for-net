@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Sibling properties. </summary>
         [WirePath("siblingProp")]
-        public virtual string SiblingProp { get; }
+        public string SiblingProp { get; }
     }
 }

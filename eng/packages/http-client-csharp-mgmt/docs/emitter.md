@@ -168,14 +168,6 @@ The C# namespace to use for the generated code. This will override the TypeSpec 
 
 Whether to put models under a separate 'Models' sub-namespace. This only applies if the 'namespace' option is set. The default value is 'false'.
 
-### `model-properties-virtual`
-
-**Type:** `boolean`
-
-**Default:** `false`
-
-Whether to make generated public instance model data properties virtual for mocking. Accessors and constructor accessibility are unchanged. The default value is 'false'.
-
 ### `enable-wire-path-attribute`
 
 **Type:** `boolean`

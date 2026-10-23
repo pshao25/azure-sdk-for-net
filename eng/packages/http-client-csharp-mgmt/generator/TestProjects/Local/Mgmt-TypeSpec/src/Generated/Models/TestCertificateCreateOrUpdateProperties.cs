@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The thumbprint algorithm. </summary>
         [WirePath("thumbprintAlgorithm")]
-        public virtual string ThumbprintAlgorithm { get; set; }
+        public string ThumbprintAlgorithm { get; set; }
 
         /// <summary> The thumbprint string. </summary>
         [WirePath("thumbprintString")]
-        public virtual string ThumbprintString { get; set; }
+        public string ThumbprintString { get; set; }
     }
 }

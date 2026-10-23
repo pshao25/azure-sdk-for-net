@@ -7,6 +7,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
     {
         /// <summary> enabled. </summary>
         [WirePath("left")]
-        public virtual string Left { get; set; }
+        public string Left { get; set; }
     }
 }

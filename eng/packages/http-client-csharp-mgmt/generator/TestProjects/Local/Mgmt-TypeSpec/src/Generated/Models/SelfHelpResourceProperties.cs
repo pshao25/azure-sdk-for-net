@@ -35,6 +35,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the SelfHelpId. </summary>
         [WirePath("selfHelpId")]
-        public virtual string SelfHelpId { get; }
+        public string SelfHelpId { get; }
     }
 }

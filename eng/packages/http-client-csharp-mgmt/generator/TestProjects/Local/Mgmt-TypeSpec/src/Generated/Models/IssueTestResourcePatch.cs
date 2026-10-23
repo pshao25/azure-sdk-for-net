@@ -39,7 +39,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Resource tags. </summary>
         [WirePath("tags")]
-        public virtual IDictionary<string, string> Tags { get; }
+        public IDictionary<string, string> Tags { get; }
 
         /// <summary> The properties to update - extends base properties with nested objects. </summary>
         [WirePath("properties")]
@@ -47,7 +47,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Simple property. </summary>
         [WirePath("properties.displayName")]
-        public virtual string DisplayName
+        public string DisplayName
         {
             get
             {
@@ -65,7 +65,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Read-only property. </summary>
         [WirePath("properties.status")]
-        public virtual string Status
+        public string Status
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Inner value that gets flattened. </summary>
         [WirePath("properties.nestedConfig.innerValue")]
-        public virtual string InnerValue
+        public string InnerValue
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Inner flag that gets flattened. </summary>
         [WirePath("properties.nestedConfig.innerFlag")]
-        public virtual bool? InnerFlag
+        public bool? InnerFlag
         {
             get
             {
@@ -111,7 +111,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Property specific to updates. </summary>
         [WirePath("properties.updateOnlyValue")]
-        public virtual string UpdateOnlyValue
+        public string UpdateOnlyValue
         {
             get
             {

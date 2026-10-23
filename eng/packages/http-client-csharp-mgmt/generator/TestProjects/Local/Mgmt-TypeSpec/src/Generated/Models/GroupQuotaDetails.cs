@@ -43,23 +43,23 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The resource name, such as SKU name. </summary>
         [WirePath("resourceName")]
-        public virtual string ResourceName { get; }
+        public string ResourceName { get; }
 
         /// <summary> The current Group Quota Limit at the parentId level. </summary>
         [WirePath("limit")]
-        public virtual long? Limit { get; }
+        public long? Limit { get; }
 
         /// <summary> Any comment related to quota request. </summary>
         [WirePath("comment")]
-        public virtual string Comment { get; }
+        public string Comment { get; }
 
         /// <summary> The usages units, such as Count and Bytes. When requesting quota, use the <b>unit</b> value returned in the GET response in the request body of your PUT operation. </summary>
         [WirePath("unit")]
-        public virtual string Unit { get; }
+        public string Unit { get; }
 
         /// <summary> The available Group Quota Limit at the MG level. This Group quota can be allocated to subscription(s). </summary>
         [WirePath("availableLimit")]
-        public virtual long? AvailableLimit { get; }
+        public long? AvailableLimit { get; }
 
         /// <summary> Quota allocated to subscriptions. </summary>
         [WirePath("allocatedToSubscriptions")]
@@ -67,7 +67,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> List of Group Quota Limit allocated to subscriptions. </summary>
         [WirePath("allocatedToSubscriptions.value")]
-        public virtual IList<AllocatedToSubscription> AllocatedToSubscriptionsValue
+        public IList<AllocatedToSubscription> AllocatedToSubscriptionsValue
         {
             get
             {

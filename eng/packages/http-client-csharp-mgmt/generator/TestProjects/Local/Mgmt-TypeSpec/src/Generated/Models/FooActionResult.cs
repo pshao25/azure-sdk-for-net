@@ -38,10 +38,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Msg. </summary>
         [WirePath("msg")]
-        public virtual string Msg { get; }
+        public string Msg { get; }
 
         /// <summary> Gets the Error. </summary>
         [WirePath("error")]
-        public virtual ResponseError Error { get; }
+        public ResponseError Error { get; }
     }
 }

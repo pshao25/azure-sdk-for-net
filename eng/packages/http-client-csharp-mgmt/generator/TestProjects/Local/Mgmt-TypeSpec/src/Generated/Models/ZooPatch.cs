@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Resource tags. </summary>
         [WirePath("tags")]
-        public virtual IDictionary<string, string> Tags { get; }
+        public IDictionary<string, string> Tags { get; }
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual ZooUpdateProperties Properties { get; set; }
+        public ZooUpdateProperties Properties { get; set; }
     }
 }

@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual HcrpConfigurationAssignmentProperties Properties { get; }
+        public HcrpConfigurationAssignmentProperties Properties { get; }
     }
 }

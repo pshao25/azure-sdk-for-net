@@ -31,7 +31,6 @@ export function filterSuppressedDiagnostics(
 
 export interface AzureMgmtEmitterOptions extends AzureEmitterOptions {
   "enable-wire-path-attribute"?: boolean;
-  "model-properties-virtual"?: boolean;
   "use-legacy-resource-detection"?: boolean;
   "skip-api-version-override"?: boolean;
 }
@@ -42,13 +41,6 @@ export const AzureMgmtEmitterOptionsSchema: JSONSchemaType<AzureMgmtEmitterOptio
     additionalProperties: false,
     properties: {
       ...AzureEmitterOptionsSchema.properties,
-      "model-properties-virtual": {
-        type: "boolean",
-        nullable: true,
-        description:
-          "Whether to make generated public instance model data properties virtual for mocking. Accessors and constructor accessibility are unchanged. The default value is 'false'.",
-        default: false
-      },
       "enable-wire-path-attribute": {
         type: "boolean",
         nullable: true,

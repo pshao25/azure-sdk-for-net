@@ -37,10 +37,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the DependencyName. </summary>
         [WirePath("dependencyName")]
-        public virtual string DependencyName { get; }
+        public string DependencyName { get; }
 
         /// <summary> Gets the Version. </summary>
         [WirePath("version")]
-        public virtual string Version { get; }
+        public string Version { get; }
     }
 }

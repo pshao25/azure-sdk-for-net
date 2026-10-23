@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the UserAssignedIdentityResourceId. </summary>
         [WirePath("userAssignedIdentityResourceId")]
-        public virtual string UserAssignedIdentityResourceId { get; set; }
+        public string UserAssignedIdentityResourceId { get; set; }
 
         /// <summary> Gets or sets the IdentityType. </summary>
         [WirePath("identityType")]
-        public virtual CmkIdentityType? IdentityType { get; set; }
+        public CmkIdentityType? IdentityType { get; set; }
     }
 }

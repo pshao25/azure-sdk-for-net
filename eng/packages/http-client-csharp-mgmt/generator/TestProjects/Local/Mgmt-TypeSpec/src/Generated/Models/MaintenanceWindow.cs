@@ -37,14 +37,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the DayOfWeek. </summary>
         [WirePath("dayOfWeek")]
-        public virtual DayOfWeek? DayOfWeek { get; set; }
+        public DayOfWeek? DayOfWeek { get; set; }
 
         /// <summary> Gets or sets the StartHour. </summary>
         [WirePath("startHour")]
-        public virtual int? StartHour { get; set; }
+        public int? StartHour { get; set; }
 
         /// <summary> Gets or sets the Duration. </summary>
         [WirePath("duration")]
-        public virtual int? Duration { get; set; }
+        public int? Duration { get; set; }
     }
 }

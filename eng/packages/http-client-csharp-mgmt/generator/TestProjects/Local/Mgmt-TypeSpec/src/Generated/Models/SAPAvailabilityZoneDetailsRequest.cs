@@ -38,6 +38,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The preferred availability zone. </summary>
         [WirePath("preferredAvailabilityZone")]
-        public virtual string PreferredAvailabilityZone { get; }
+        public string PreferredAvailabilityZone { get; }
     }
 }

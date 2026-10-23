@@ -11,6 +11,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
     {
         /// <summary> Configures how auto-upgrade will be run. </summary>
         [CodeGenMember("Channel")]
-        public virtual FlattenChannel? Channel { get; set; }
+        public FlattenChannel? Channel { get; set; }
     }
 }

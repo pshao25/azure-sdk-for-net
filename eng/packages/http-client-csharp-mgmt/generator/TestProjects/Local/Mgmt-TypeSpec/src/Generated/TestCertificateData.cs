@@ -45,7 +45,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Gets the Thumbprint. </summary>
         [WirePath("properties.thumbprint")]
-        public virtual string TestCertificateThumbprint
+        public string TestCertificateThumbprint
         {
             get
             {

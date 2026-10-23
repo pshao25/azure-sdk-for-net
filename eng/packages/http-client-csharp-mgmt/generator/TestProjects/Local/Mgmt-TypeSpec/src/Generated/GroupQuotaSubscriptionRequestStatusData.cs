@@ -39,6 +39,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual GroupQuotaLimitProperties Properties { get; }
+        public GroupQuotaLimitProperties Properties { get; }
     }
 }

@@ -38,14 +38,14 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Id. </summary>
         [WirePath("id")]
-        public virtual ResourceIdentifier Id { get; set; }
+        public ResourceIdentifier Id { get; set; }
 
         /// <summary> Gets or sets the Name. </summary>
         [WirePath("name")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary> Gets or sets the Type. </summary>
         [WirePath("type")]
-        public virtual string Type { get; set; }
+        public string Type { get; set; }
     }
 }

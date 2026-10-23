@@ -46,7 +46,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> Topic endpoint. </summary>
         [WirePath("properties.endpoint")]
-        public virtual string EventGridTopicEndpoint
+        public string EventGridTopicEndpoint
         {
             get
             {

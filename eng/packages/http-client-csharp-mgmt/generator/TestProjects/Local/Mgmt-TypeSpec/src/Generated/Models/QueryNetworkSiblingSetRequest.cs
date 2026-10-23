@@ -40,10 +40,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Location to query. </summary>
         [WirePath("location")]
-        public virtual string Location { get; }
+        public string Location { get; }
 
         /// <summary> Subscription ID to query. </summary>
         [WirePath("subscriptionId")]
-        public virtual string SubscriptionId { get; set; }
+        public string SubscriptionId { get; set; }
     }
 }

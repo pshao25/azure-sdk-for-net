@@ -43,6 +43,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests
 
         /// <summary> The resource-specific properties for this resource. </summary>
         [WirePath("properties")]
-        public virtual PolicyAssignmentProperties Properties { get; set; }
+        public PolicyAssignmentProperties Properties { get; set; }
     }
 }

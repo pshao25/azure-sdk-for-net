@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Subscription quota list. </summary>
         [WirePath("value")]
-        public virtual IList<string> Value { get; }
+        public IList<string> Value { get; }
 
         /// <summary> The URL to use for getting the next set of results. </summary>
         [WirePath("nextLink")]
-        public virtual string NextLink { get; }
+        public string NextLink { get; }
     }
 }

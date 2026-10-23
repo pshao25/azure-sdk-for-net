@@ -90,31 +90,31 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> the service url. </summary>
         [WirePath("serviceUrl")]
-        public virtual Uri ServiceUri { get; set; }
+        public Uri ServiceUri { get; set; }
 
         /// <summary> something. </summary>
         [WirePath("something")]
-        public virtual ManagedServiceIdentity Something { get; set; }
+        public ManagedServiceIdentity Something { get; set; }
 
         /// <summary> boolean value. </summary>
         [WirePath("boolValue")]
-        public virtual bool? BoolValue { get; set; }
+        public bool? BoolValue { get; set; }
 
         /// <summary> float value. </summary>
         [WirePath("floatValue")]
-        public virtual float? FloatValue { get; set; }
+        public float? FloatValue { get; set; }
 
         /// <summary> double value. </summary>
         [WirePath("doubleValue")]
-        public virtual double? DoubleValue { get; set; }
+        public double? DoubleValue { get; set; }
 
         /// <summary> Gets the Prop1. </summary>
         [WirePath("prop1")]
-        public virtual IList<string> Prop1 { get; } = new ChangeTrackingList<string>();
+        public IList<string> Prop1 { get; } = new ChangeTrackingList<string>();
 
         /// <summary> Gets the Prop2. </summary>
         [WirePath("prop2")]
-        public virtual IList<int> Prop2 { get; } = new ChangeTrackingList<int>();
+        public IList<int> Prop2 { get; } = new ChangeTrackingList<int>();
 
         /// <summary> Gets or sets the NestedProperty. </summary>
         [WirePath("nestedProperty")]
@@ -130,11 +130,11 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> ETag property for testing etag parameter name generation. </summary>
         [WirePath("etag")]
-        public virtual ETag? ETag { get; set; }
+        public ETag? ETag { get; set; }
 
         /// <summary> WritableSubResource property for testing WritableSubResource type replacement. </summary>
         [WirePath("writableSubResourceProp")]
-        public virtual WritableSubResource WritableSubResourceProp { get; set; }
+        public WritableSubResource WritableSubResourceProp { get; set; }
 
         /// <summary> Test case for multi-layer safe flatten. </summary>
         [WirePath("computeFleetVmProfile")]
@@ -142,7 +142,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Properties. </summary>
         [WirePath("nestedProperty.properties")]
-        public virtual FooProperties NestedPropertyProperties
+        public FooProperties NestedPropertyProperties
         {
             get
             {
@@ -156,7 +156,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the FlattenedProperty. </summary>
         [WirePath("optionalProperty.flattenedProperty")]
-        public virtual IList<string> FlattenedProperty
+        public IList<string> FlattenedProperty
         {
             get
             {
@@ -170,7 +170,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Specifies the gallery applications that should be made available. </summary>
         [WirePath("vmProfile.applicationProfile.galleryApplications")]
-        public virtual IList<string> VmGalleryApplications
+        public IList<string> VmGalleryApplications
         {
             get
             {
@@ -184,7 +184,7 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets or sets the Id. </summary>
         [WirePath("computeFleetVmProfile.capacityReservation.capacityReservationGroup.id")]
-        public virtual ResourceIdentifier ComputeFleetVmCapacityReservationGroupId
+        public ResourceIdentifier ComputeFleetVmCapacityReservationGroupId
         {
             get
             {

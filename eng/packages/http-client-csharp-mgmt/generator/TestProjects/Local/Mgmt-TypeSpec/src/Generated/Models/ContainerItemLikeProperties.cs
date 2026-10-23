@@ -33,6 +33,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> A simple string property. </summary>
         [WirePath("something")]
-        public virtual string Something { get; }
+        public string Something { get; }
     }
 }

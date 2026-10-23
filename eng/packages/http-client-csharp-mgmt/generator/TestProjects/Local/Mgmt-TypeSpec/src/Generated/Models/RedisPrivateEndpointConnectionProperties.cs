@@ -43,15 +43,15 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the PrivateLinkServiceConnectionState. </summary>
         [WirePath("privateLinkServiceConnectionState")]
-        public virtual RedisPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; }
+        public RedisPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; }
 
         /// <summary> Gets the ProvisioningState. </summary>
         [WirePath("provisioningState")]
-        public virtual ProvisioningState? ProvisioningState { get; }
+        public ProvisioningState? ProvisioningState { get; }
 
         /// <summary> Gets the Id. </summary>
         [WirePath("privateEndpoint.id")]
-        public virtual string PrivateEndpointId
+        public string PrivateEndpointId
         {
             get
             {

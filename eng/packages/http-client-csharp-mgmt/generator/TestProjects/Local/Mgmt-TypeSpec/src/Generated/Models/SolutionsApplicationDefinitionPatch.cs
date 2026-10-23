@@ -34,6 +34,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Application definition tags. </summary>
         [WirePath("tags")]
-        public virtual IDictionary<string, string> Tags { get; }
+        public IDictionary<string, string> Tags { get; }
     }
 }

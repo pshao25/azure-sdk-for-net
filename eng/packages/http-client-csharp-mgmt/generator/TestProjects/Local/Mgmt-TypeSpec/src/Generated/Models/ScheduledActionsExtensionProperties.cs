@@ -35,10 +35,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The scheduled action identifier. </summary>
         [WirePath("actionId")]
-        public virtual string ActionId { get; }
+        public string ActionId { get; }
 
         /// <summary> The scheduled action status. </summary>
         [WirePath("status")]
-        public virtual string Status { get; }
+        public string Status { get; }
     }
 }

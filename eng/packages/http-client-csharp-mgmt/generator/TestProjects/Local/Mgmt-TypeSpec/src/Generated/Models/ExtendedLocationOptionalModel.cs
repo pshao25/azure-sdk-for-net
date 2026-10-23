@@ -36,10 +36,10 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> The name of the extended location. </summary>
         [WirePath("name")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary> The type of the extended location. </summary>
         [WirePath("type")]
-        public virtual ExtendedLocationType? Type { get; set; }
+        public ExtendedLocationType? Type { get; set; }
     }
 }

@@ -35,6 +35,6 @@ namespace Azure.Generator.MgmtTypeSpec.Tests.Models
 
         /// <summary> Gets the Sku. </summary>
         [WirePath("sku")]
-        public virtual string Sku { get; }
+        public string Sku { get; }
     }
 }
