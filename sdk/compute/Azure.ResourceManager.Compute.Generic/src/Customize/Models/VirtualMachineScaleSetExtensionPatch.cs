@@ -1,0 +1,31 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+#nullable disable
+
+using System;
+using System.ClientModel.Primitives;
+using System.ComponentModel;
+using Azure.ResourceManager.Models;
+using Microsoft.TypeSpec.Generator.Customizations;
+
+namespace Azure.ResourceManager.Compute.Models
+{
+    // Backward compatibility: the previously shipped SDK exposed this patch model as a direct ResourceData-derived type.
+    // The generator honors this partial base declaration and emits generated code with the same base type.
+    [CodeGenType("VirtualMachineScaleSetExtensionUpdate")]
+    public partial class VirtualMachineScaleSetExtensionPatch : ResourceData
+    {
+        // Backward compatibility: the previously-shipped SDK exposed `ProtectedSettingsFromKeyVault` as a loosely-typed
+        // BinaryData property. The TypeSpec spec types it as `KeyVaultSecretReference`, which is now surfaced as the
+        // strongly-typed `KeyVaultProtectedSettings` (see G5 client.tsp clientName rename). This shim re-adds the
+        // BinaryData accessor by serializing/deserializing through the typed property to preserve binary compatibility.
+        /// <summary> The extensions protected settings that are passed by reference, and consumed from key vault. </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public BinaryData ProtectedSettingsFromKeyVault
+        {
+            get => KeyVaultProtectedSettings is null ? null : ((IJsonModel<KeyVaultSecretReference>)KeyVaultProtectedSettings).Write(ModelSerializationExtensions.WireOptions);
+            set => KeyVaultProtectedSettings = value is null ? null : ModelReaderWriter.Read<KeyVaultSecretReference>(value, ModelSerializationExtensions.WireOptions, AzureResourceManagerComputeContext.Default);
+        }
+    }
+}
