@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../Azure.ResourceManager.Compute/src/Azure.ResourceManager.Compute.csproj" />
+  <Project Path="src/Azure.ResourceManager.Compute.Init.csproj" />
+  <Project Path="perf/Azure.ResourceManager.Compute.Init.Perf.csproj" />
+</Solution>
